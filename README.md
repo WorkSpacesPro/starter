@@ -198,7 +198,8 @@ yarn
 Please note, that if you are using Windows, you may need to run:
 
 ```bash
-$env:PWD = $(Get-Location).Path
+powershell: $env:PWD = $(Get-Location).Path
+cmd: set PWD=%CD%
 ```
 
 ## Development
