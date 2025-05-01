@@ -151,6 +151,44 @@ The primary theme color is updated from `teal` to `pink` and the primary gray th
 
 Inter is now replaced with Space Grotesk as the default font.
 
+## New Code Block Light/Dark Themes
+
+We’ve replaced PrismJS with **[Shiki](https://shiki.style/)** for simplified, accurate, and faster syntax highlighting.
+
+### Why Shiki?
+
+- **Faster & More Accurate**: Shiki uses same engine as VS Code's syntax highlighting. Provides very accurate and fast syntax highlighting for almost any mainstream programming language.
+- **No Customization Required**: No need for custom RegEx, CSS, or HTML.
+
+### Features and Customization:
+
+- **Light & Dark Mode Support**: Automatically switches between light and dark themes based on the app’s current theme.
+
+- **More Themes**: it offers variety of built-in themes to choose from, just like VS Code.
+
+- **Custom Themes**: You can load custom themes by passing a Theme object into the themes array. ( learn more about custom themes [Shiki custom Themes](https://shiki.style/themes).)
+
+- **Change Themes**: Modify code block light/dark themes in the `contentlayer.ts` file.Default Light/dark theme is `github-light` and `aurora-x`.
+
+- **Code Title Style**: The code title is designed with a minimal three-dot MacBook style. You can adjust or remove it in the `css/tailwind.css` file.
+
+For a complete list of available themes and to experiment with different styles, visit [Shiki Themes](https://shiki.style/themes).
+
+```ts:contentlayer.config.ts
+[
+  rehypeShiki,
+  {
+    themes: {
+      // Here you can play with All built-in Shiki themes.
+      // You can load custom themes by passing a Theme object into the themes array.
+
+      light: 'github-light',
+      dark: 'aurora-x',
+    },
+  },
+]
+```
+
 ### New Layouts
 
 Layout components available in the `layouts` directory, provide a simple way to customize the look and feel of the blog.[^2]

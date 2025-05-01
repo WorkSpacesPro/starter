@@ -173,3 +173,61 @@ input:-webkit-autofill:focus {
   display: inline-block;
   vertical-align: middle;
 }
+
+/* Code Block and Code Title styles  */
+/* Class-based Dark Theme Styles for Shiki Syntax Highlighting. For more info visit - https://shiki.style/guide/dual-themes*/
+
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* Code block title style. Feel free to edit */
+.remark-code-title {
+  @apply relative border-t border-r border-l border-gray-200 px-4 py-3 font-mono text-sm font-semibold dark:border-none;
+  @apply bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300;
+  @apply rounded-t-md;
+  padding-right: 3.5rem; /* Make space for dots */
+}
+
+/* Create the three dots using a pseudo-element */
+.remark-code-title::before {
+  content: '';
+  position: absolute;
+  right: 5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+/* Create the dots using box shadows */
+.remark-code-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  /* Mac-style red, yellow, green dots using box-shadow trick */
+  box-shadow:
+    20px 0 0 #f87171,
+    40px 0 0 #fbbf24,
+    60px 0 0 #4ade80;
+}
+
+/* Dark mode colors for three dot */
+.dark .remark-code-title::before {
+  box-shadow:
+    20px 0 0 #ef4444,
+    40px 0 0 #eab308,
+    60px 0 0 #22c55e;
+}
+
+/* Adjust the pre element to connect perfectly */
+.remark-code-title + div > pre {
+  @apply mt-0 rounded-t-none;
+}
