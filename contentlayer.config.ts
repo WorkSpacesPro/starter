@@ -80,16 +80,75 @@ async function createTagCount(allBlogs) {
   writeFileSync('./app/tag-data.json', formatted)
 }
 
-function createSearchIndex(allBlogs) {
+// Define the structure of a search entry
+interface SearchEntry {
+  objectID: string
+  title: string
+  date: string | Date
+  summary?: string // Summary might be optional or missing sometimes
+  tags?: string[] // Tags might be optional
+  kind: 'Article' | 'Heading 2'
+  path: string
+}
+
+async function createSearchIndex(allBlogs) {
   if (
     siteMetadata?.search?.provider === 'kbar' &&
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
-    writeFileSync(
-      `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
-      JSON.stringify(allCoreContent(sortPosts(allBlogs)))
-    )
-    console.log('Local search index generated...')
+    const searchEntries: SearchEntry[] = [] // Explicitly type the array
+    const cutoffDate = new Date()
+    cutoffDate.setDate(cutoffDate.getDate() - 7)
+
+    const recentBlogs = allBlogs.filter((blog) => {
+      const postDate = new Date(blog.date)
+      return postDate >= cutoffDate && (!isProduction || blog.draft !== true)
+    })
+
+    const sortedRecentBlogs = sortPosts(recentBlogs)
+
+    for (const blog of sortedRecentBlogs) {
+      searchEntries.push({
+        objectID: blog.path,
+        title: blog.title,
+        date: blog.date,
+        summary: blog.summary,
+        tags: blog.tags,
+        kind: 'Article',
+        path: blog.path,
+      })
+
+      if (blog.headings) {
+        for (const heading of blog.headings) {
+          if (heading.depth === 2) {
+            const headingSlug = heading.url.substring(1)
+            searchEntries.push({
+              objectID: `${blog.path}#${headingSlug}`,
+              title: heading.value,
+              date: blog.date,
+              summary: '',
+              tags: [],
+              kind: 'Heading 2',
+              path: `${blog.path}#${headingSlug}`,
+            })
+          }
+        }
+      }
+    }
+
+    const formattedEntries = await prettier.format(JSON.stringify(searchEntries, null, 2), {
+      parser: 'json',
+    })
+
+    try {
+      writeFileSync(
+        `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
+        formattedEntries
+      )
+      console.log('Local search index generated with recent posts and headings.')
+    } catch (error) {
+      console.error('Error writing search index file:', error)
+    }
   }
 }
 
@@ -182,7 +241,6 @@ export default makeSource({
   },
   onSuccess: async (importData) => {
     const { allBlogs } = await importData()
-    createTagCount(allBlogs)
-    createSearchIndex(allBlogs)
+    await Promise.all([createTagCount(allBlogs), createSearchIndex(allBlogs)])
   },
 })
