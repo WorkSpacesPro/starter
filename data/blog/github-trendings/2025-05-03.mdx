@@ -1,0 +1,377 @@
+---
+title: Github Daily Trending
+date: 2025-05-03
+cover: https://hub-image.moreve.net/files/images/github-trending/2025-05-03.png
+tags: [开源项目, AI前沿, 开发工具]
+summary: 这份内容汇总了十个开源项目：Deep-Live-Cam用于实时换脸与单图生成深度伪造视频，强调伦理使用；ACI.dev是一个开源平台，连接AI智能体与600多种工具集成，具备权限控制；SurfSense是开源AI研究代理，集成个人知识库与外部数据源；Cloudflare MCP服务器支持LLM通过MCP协议管理Cloudflare服务；DesktopCommanderMCP是Claude的MCP服务器，提供终端、文件系统与编辑功能；Hyperswitch是Rust语言编写的开源支付网关，提供快速可靠的支付交换服务；Atmosphere是任天堂Switch的定制固件，增强系统功能；Union是信任最小化零知识跨链桥协议，专注于抗审查和去中心化金融；Cloudflare Agents用于在Cloudflare上构建和部署有状态AI代理；DiceDB是高性能内存数据库，优化现代硬件，支持实时数据更新；zapret-discord-youtube提供Windows下绕过Discord和YouTube封锁的简便工具；Qwen-Agent是基于通义模型的智能体开发框架，支持函数调用、代码解释器和RAG等；system-design-primer是一个系统设计学习资源，帮助准备面试；Open WebUI是友好的自托管AI界面，支持Ollama和多种API；LangWatch是开放的LLM Ops平台，用于观测、评估和优化LLM应用。这些项目涵盖AI应用、基础设施、支付、游戏固件、跨链技术、系统工具、教育资源和运维平台等多个领域。
+---
+
+## Deep-Live-Cam
+
+仅用单张图像实现实时换脸和一键视频深度伪造
+
+**作者:** [hacksider](https://github.com/hacksider.png) | **仓库:** [Github 链接](https://github.com/hacksider/Deep-Live-Cam)
+**语言:** Python | **Stars:** 57604
+**Forks:** 8169 | **Recent Stars** 1488
+
+### 项目简介
+
+Deep-Live-Cam：实时换脸与单图生成深度伪造视频
+
+Deep-Live-Cam 是一个开源项目，专注于提供实时换脸和通过单张图片生成视频深度伪造（deepfake）的功能。该工具旨在为AI生成媒体产业提供实用帮助，例如协助艺术家制作动画角色、创造引人入胜的内容或用于服装设计。
+
+项目开发者强调了伦理使用和责任问题，内置了审查机制以防止处理包含不当内容（如裸体、暴力、敏感素材等）的媒体。他们承诺将继续负责任地开发该项目，遵守法律和道德规范，并可能在法律要求下关闭项目或添加水印。项目明确声明不为此软件的最终用户行为负责，用户在使用名人或真实人物面部时，必须获得同意并在分享时明确标注为深度伪造。
+
+软件提供了便捷的使用方式，针对Windows用户提供了预构建版本，尤其适合拥有独立NVIDIA或AMD显卡、且不具备技术背景或不愿意手动安装依赖的用户。该预构建版本比开源手动安装版本提前约60天。对于三步快速启动方式，用户只需选择一张源脸图片和要使用的摄像头，然后点击“Live”即可开始实时换脸。此外，该软件还支持多种高级功能，包括：
+
+- **嘴部遮罩（Mouth Mask）:** 保留原始嘴部运动，以获得更准确的效果。
+- **面部映射（Face Mapping）:** 同时在多个对象上使用不同的面部。
+- **观影换脸（Your Movie, Your Face）:** 实时观看任何视频时将您的脸替换进去。
+- **直播表演（Live Show）:** 用于进行实时直播和表演。
+- **表情包制作（Memes）:** 轻松创建病毒式传播的表情包。
+- **Omegle应用:** 在Omegle等平台上给他人带来惊喜。
+
+对于技术用户，项目也提供了详细的手动安装指南，支持Windows和macOS平台，并提供了CPU、CUDA（NVIDIA）、CoreML（Apple Silicon/Legacy）、DirectML（Windows）和OpenVINO™（Intel）等多种执行提供商选项以实现GPU加速。说明中详细列出了所需的依赖项和安装步骤，并包含了命令行参数列表（目前标记为Unmaintained，即不再积极维护）。
+
+Deep-Live-Cam项目受到了媒体的广泛关注和报道，同时也受到了用户的积极反馈和贡献。该项目遵循AGPL-3.0许可协议，是一款功能强大且具备一定争议性的深度伪造工具，其开发者强调了其潜在的积极用途并呼吁用户负责任地使用。
+
+---
+
+## aci
+
+ACI.dev 是连接您的 AI 智能体到 600 多个工具集成的开源平台，提供多租户身份认证、精细权限控制以及通过直接函数调用或统一的 MCP 服务器进行访问。
+
+**作者:** [aipotheosis-labs](https://github.com/aipotheosis-labs.png) | **仓库:** [Github 链接](https://github.com/aipotheosis-labs/aci)
+**语言:** Python | **Stars:** 1322
+**Forks:** 87 | **Recent Stars** 243
+
+### 项目简介
+
+ACI.dev：连接AI智能体与工具集成的开源平台
+
+ACI.dev 是一个开源基础设施平台，旨在帮助开发者轻松构建具备工具使用能力的AI智能体。该平台通过提供统一的接口和丰富的功能，解决了AI智能体在与外部应用和服务集成时遇到的关键挑战。
+
+核心功能包括：
+
+1.  **海量集成：** ACI.dev 预置了超过600个工具集成，涵盖了各种流行的服务和应用，使AI智能体能够快速连接并利用这些工具的功能。
+2.  **灵活的访问方式：** 智能体可以通过直接函数调用或通过统一的模型-上下文-协议（MCP）服务器访问工具功能，提供了多种集成选项。
+3.  **多租户认证与精细权限：** 平台内置了强大的认证和权限管理机制，支持多用户场景，并能对智能体的工具使用权限进行细粒度控制，确保安全可靠。
+4.  **动态工具发现：** 智能体可以动态发现可用的工具，避免将过多不相关的工具信息加载到上下文窗口中，提高效率。
+5.  **框架与模型无关：** ACI.dev 兼容任何LLM框架和智能体架构，不限制底层技术选择。
+6.  **100% 开源：** 平台及其组件完全开源，采用 Apache 2.0 许可证。
+
+通过使用 ACI.dev，开发者能够专注于构建AI智能体的核心逻辑，而无需花费大量时间和精力处理复杂的认证流程、API客户端开发和权限管理等基础设施问题。这使得构建生产级、具备实际操作能力的AI智能体成为可能。
+
+平台上还提供了丰富的资源链接，包括官方网站、文档、SDK、MCP服务器、智能体示例、博客以及Discord社区和社交媒体渠道，方便用户深入了解和参与项目。平台支持本地开发，并提供了详细的后端和前端配置指南。同时，项目鼓励社区贡献，包括提交Bug报告、改进文档以及提交新的工具集成请求或代码。
+
+总之，ACI.dev 是一个强大的开源平台，为AI智能体提供了连接外部工具的标准化、可信赖的基础设施，显著降低了构建多功能、生产级AI智能体的技术门槛和复杂性。
+
+---
+
+## SurfSense
+
+NotebookLM / Perplexity / Glean 的开源替代方案，连接到搜索引擎（Tavily、Linkup）、Slack、Linear、Notion、YouTube、GitHub等外部来源
+
+**作者:** [MODSetter](https://github.com/MODSetter.png) | **仓库:** [Github 链接](https://github.com/MODSetter/SurfSense)
+**语言:** TypeScript | **Stars:** 1949
+**Forks:** 154 | **Recent Stars** 42
+
+### 项目简介
+
+SurfSense：一个开源的 AI 研究代理，增强个人知识库
+
+SurfSense 是一个开源项目，旨在成为 NotebookLM、Perplexity 和 Glean 的替代品。它的核心功能是作为一个高度可定制的 AI 研究代理，能够连接到多种外部信息源，包括搜索引引擎（如 Tavily、LinkUp）、Slack、Linear、Notion、YouTube 和 GitHub。
+
+与现有工具相比，SurfSense 的一个主要优势在于它能与用户的个人知识库集成。用户可以将多种文件格式（支持 27 种文件扩展名）的文档、图片等内容保存到个人知识库中，并利用强大的搜索功能快速查找或研究这些保存的内容。 SurfSense 还支持与保存的内容进行自然语言交互，并提供带有引用的答案。
+
+该项目注重隐私，支持使用 Ollama 等本地大型语言模型 (LLM)。SurfSense 是一个自托管的解决方案，易于在本地部署。它采用了先进的检索增强生成 (RAG) 技术，支持 150 多种 LLM 和 6000 多种嵌入模型，并集成了主要的重排器（Rerankers）。 SurfSense 使用分层索引和混合搜索（结合语义搜索、全文搜索和倒数排名融合 Reciprocal Rank Fusion），并提供 RAG 即服务的 API 后端。
+
+此外，SurfSense 还提供了一个跨浏览器扩展程序，方便用户保存任何网页内容，特别是那些需要认证才能访问的页面。
+
+项目目前仍在积极开发中，并欢迎贡献者加入。当前版本提供 Docker 和手动两种安装方式，并提供了详细的安装指南和先决条件说明，包括 PGVector 设置、Google OAuth 配置、Unstructured.io API Key 等。虽然播客功能目前暂停开发以进行优化，但未来计划增加更多连接器、修复 bug、实现画布功能以及完善混合搜索等。
+
+总体而言，SurfSense 提供了一个灵活、可定制且注重隐私的开源 AI 研究工具，通过集成个人数据和多种外部来源，旨在提升用户研究和信息管理的效率。
+
+---
+
+## mcp-server-cloudflare
+
+翻译后的标题：
+
+**作者:** [cloudflare](https://github.com/cloudflare.png) | **仓库:** [Github 链接](https://github.com/cloudflare/mcp-server-cloudflare)
+**语言:** TypeScript | **Stars:** 1573
+**Forks:** 121 | **Recent Stars** 41
+
+### 项目简介
+
+Cloudflare MCP 服务器概览
+
+这份内容主要介绍了 Cloudflare 为 Model Context Protocol (MCP) 提供的一系列服务器。MCP 是一种新的、标准化的协议，旨在帮助大型语言模型 (LLMs)，如 Claude 或 Cursor，更好地与外部系统交互。通过这些 MCP 服务器，用户可以使用自然语言指令来管理和操作他们的 Cloudflare 账户和服务。
+
+该仓库包含多个不同的 MCP 服务器，每个服务器都专注于 Cloudflare 的特定服务或功能，例如用于获取 Cloudflare 文档信息的服务器、用于构建 Workers 应用程序的服务器、用于调试和分析应用日志的 Observability 服务器、提供全球互联网流量洞察的 Radar 服务器，以及用于安全审计日志查询、DNS 分析、数字体验监控等功能的服务器。这些服务器允许 MCP 客户端读取账户配置、处理信息、提供基于数据的建议，甚至直接执行更改。
+
+用户可以通过支持远程 MCP 服务器的客户端直接访问这些服务器，或者对于不支持的客户端，可以使用 `mcp-remote` 工具进行配置连接。内容还提供了故障排除提示，例如如何避免大型语言模型因超出上下文长度限制而中断响应，并强调了可能需要付费的 Cloudflare Workers 计划才能使用某些高级功能。最后，内容也鼓励社区贡献者参与项目。
+
+---
+
+## DesktopCommanderMCP
+
+这是一个面向Claude的MCP服务器，为其提供终端控制、文件系统搜索和差异文件编辑功能
+
+**作者:** [wonderwhy-er](https://github.com/wonderwhy-er.png) | **仓库:** [Github 链接](https://github.com/wonderwhy-er/DesktopCommanderMCP)
+**语言:** TypeScript | **Stars:** 2309
+**Forks:** 245 | **Recent Stars** 69
+
+### 项目简介
+
+Desktop Commander MCP：为 Claude 提供终端控制、文件系统操作和文件编辑能力。
+
+Desktop Commander MCP 是一个专为 Claude 设计的 Model Context Protocol (MCP) 服务器。其核心目的是赋予 Claude 对本地文件系统和终端的强大控制能力，使其能够超越传统的 AI 编辑器，执行更复杂、更贴近实际开发的工作。该项目基于 MCP 文件系统服务器构建，并在此基础上增加了搜索、替换和差异编辑等文件编辑功能。
+
+主要功能包括：
+
+1.  **终端控制：** 允许 Claude 执行终端命令，支持输出流式传输、命令超时、后台执行以及进程管理（列出和终止进程）。
+2.  **文件系统操作：** 提供全面的文件系统功能，如读写文件、创建/列出目录、移动文件/目录、搜索文件以及获取文件元数据。还支持从本地或 URL 读取文本和图像内容。
+3.  **文件编辑：** 提供两种模式：针对小改动的精准文本替换 (`edit_block` 工具，支持模糊匹配和多处替换) 以及针对大改动的完整文件重写 (`write_file` 工具)。支持多文件操作和基于模式的替换。
+4.  **代码编辑：** 利用 vscode-ripgrep 实现文件夹内的递归代码或文本搜索。
+5.  **配置管理：** 允许用户通过工具获取和设置服务器配置，如阻止的命令、默认 shell 和允许访问的目录。配置会持久化保存。
+
+该项目提供了多种安装方式，包括 npx、bash 脚本 (macOS)、Smithery 以及手动修改 Claude 桌面版配置文件。通过 npx 或 Smithery 安装可实现自动更新。项目安全提示强调在单独的聊天窗口中进行配置更改，并注意 `allowedDirectories` 设置目前仅限制文件系统操作，终端命令仍可能访问此范围外的文件。
+
+Desktop Commander MCP 的目标是将所有 AI 开发工具整合到一个聊天界面中，使其成为一个多功能的开发助理，尤其适合探索复杂代码库、自动化任务和进行精准的代码修改。该项目是开源且免费使用的，通过支持其开发可以帮助持续改进和增加新功能。隐私方面，项目收集有限的匿名遥测数据，用户可以选择退出。详细信息可在项目的 FAQ 和隐私政策中找到。
+
+---
+
+## hyperswitch
+
+用 Rust 编写的开源支付交换系统，让支付变得快速、可靠且经济实惠
+
+**作者:** [juspay](https://github.com/juspay.png) | **仓库:** [Github 链接](https://github.com/juspay/hyperswitch)
+**语言:** Rust | **Stars:** 17431
+**Forks:** 2086 | **Recent Stars** 264
+
+### 项目简介
+
+Hyperswitch：一款基于 Rust 的开源支付网关
+
+Hyperswitch 是由 Juspay 开发的一款开源支付网关，旨在提供快速、可靠且经济实惠的支付解决方案。该项目采用 Rust 语言编写，并遵循 Apache 2.0 许可证开源。Hyperswitch 的核心愿景是成为“支付领域的 Linux”，打造一个开放、社区驱动、高性能的支付平台，以应对全球支付生态系统中日益增长的多样性和复杂性。
+
+Hyperswitch 提供了一个单一的 API，用于接入各种支付处理方和支付生态系统功能。主要组件包括：
+
+- **Hyperswitch Backend：** 负责处理支付流程，包括授权、认证、作废、捕获、退款和拒付等。它还支持非支付用例，并能集成欺诈风险管理和认证服务。后端具备强大的支付路由优化能力，支持基于成功率、规则、流量分配、故障转移以及基于错误代码的智能重试机制。
+- **SDK (Frontend)：** 提供 Web、Android 和 iOS 版本，统一了不同支付方式（卡、电子钱包、先买后付等）的支付体验，并支持底层支付服务提供商的多种支付流程。与支付方法存储配合使用时，可以展示用户已保存的支付方式。
+- **Control Center：** 一个无代码界面，用于管理整个支付堆栈。用户可以通过它创建路由和支付重试工作流，定义触发 3DS、FRM 和附加费模块的条件。Control Center 还提供跨支付服务提供商的交易、退款和拒付操作管理，以及详细的交易日志和支付表现分析。
+
+Hyperswitch 提供了多种部署和试用方式，包括一键式本地 Docker 设置、基于 AWS CDK 的云部署（适用于原型开发），以及基于 Helm Charts 的 GCP 和 Azure 部署。同时，用户还可以通过其托管沙盒体验产品，进行连接器配置、工作流定义和支付测试。
+
+该项目强调拥抱支付多样性、开源透明、社区驱动、系统级软件的可靠性和高性能，并致力于为开发者、客户和合作伙伴创造最大价值。项目拥有一个由 150 多名工程师组成的核心团队。
+
+代码库主要使用 Rust (80.6%) 和 JavaScript (18.3%)，并包含其他少量语言的代码。项目积极维护，并有详细的更新日志和丰富的贡献者社区。
+
+---
+
+## Atmosphere
+
+Atmosphère：任天堂 Switch 的一款进行中的定制固件
+
+**作者:** [Atmosphere-NX](https://github.com/Atmosphere-NX.png) | **仓库:** [Github 链接](https://github.com/Atmosphere-NX/Atmosphere)
+**语言:** C++ | **Stars:** 15836
+**Forks:** 1268 | **Recent Stars** 32
+
+### 项目简介
+
+Atmosphere：任天堂Switch的自定义固件
+
+Atmosphere是一个正在开发中的任天堂Switch自定义固件项目。它的目标是取代或修改Switch的官方固件组件，提供更灵活的功能。
+
+该项目包含多个核心组件，每个组件负责不同的系统层级：Fusée作为第一阶段加载器，负责加载内核模块；Exosphère是定制的TrustZone，运行安全的监控程序；Thermosphère提供EmuNAND（虚拟NAND）支持；Stratosphère包含自定义系统服务模块，用于扩展内核或实现新的功能；Troposphère则负责在应用层级对Horizon OS（Switch操作系统）进行补丁，以实现自定义固件特性。
+
+Atmosphere遵循GPLv2开源许可，但对任天堂有特定的豁免条款。项目由SciresM、TuxSH、hexkyz和fincs等多名开发者共同维护，并得到了多个Switch开发社区和工具链项目的贡献者支持，包括switchbrew（提供libnx和文档）、devkitPro（提供开发工具链）、ReSwitched Team（提供研究和文档）、FatFs（文件系统模块）、以及hekate和emuMMC等项目的开发者。该项目欢迎代码贡献，旨在持续改进Switch的自定义固件体验。
+
+---
+
+## union
+
+最少信任的零知識橋接協議，設計用於抗審查、極高安全性和去中心化金融應用
+
+**作者:** [unionlabs](https://github.com/unionlabs.png) | **仓库:** [Github 链接](https://github.com/unionlabs/union)
+**语言:** Rust | **Stars:** 56280
+**Forks:** 2821 | **Recent Stars** 369
+
+### 项目简介
+
+Union项目概述：去中心化信任最小化跨链桥协议
+
+Union 是一个采用信任最小化和零知识证明技术的跨链桥协议，旨在提供高度的抗审查性和安全性，特别适用于去中心化金融（DeFi）领域。该协议基于“共识验证”（Consensus Verification），不依赖于可信第三方、预言机、多重签名或多方计算（MPC）。
+
+Union 协议实现了 IBC（跨链通信协议），兼容 Cosmos 生态链，同时连接 EVM 兼容链，例如以太坊、Berachain、Arbitrum 等。协议的升级、连接管理和代币配置等关键方面将通过去中心化治理方式进行控制，以确保协议的发展与用户、验证者和运营商的利益保持一致。
+
+项目的代码库包含多个核心组件，使用 Go、Rust、TypeScript 和 Solidity 等多种编程语言开发。主要组件包括 Union 节点实现 (`uniond`)，零知识证明器 (`galoisd`)，高性能跨生态中继器 (`voyager`)，多生态链索引器 (`hubble`)，CosmWasm 智能合约栈 (`cosmwasm`)，以及用于不同生态系统的轻客户端 (`light-clients`)。此外，项目还提供了用于生产部署的节点监督器 (`unionvisor`)，Cosmos 链的水龙头工具 (`drip`)，EVM 智能合约栈 (`evm`)，以及一个用户界面 (`app`) 和官方网站 (`site`) 的实现。为了方便开发者交互，还提供了 TypeScript SDK (`typescript-sdk`)。
+
+项目强调可重复构建，推荐使用 Nix 包管理器来构建任何组件并进入包含所有依赖项的开发环境。文档可在官方网站获取，每个组件也有相应的开发文档位于其 README 文件中。项目的代码遵循 Apache-2.0 和 MIT 双重开源许可证。
+
+---
+
+## agents
+
+在 Cloudflare 上构建和部署 AI 代理
+
+**作者:** [cloudflare](https://github.com/cloudflare.png) | **仓库:** [Github 链接](https://github.com/cloudflare/agents)
+**语言:** TypeScript | **Stars:** 1758
+**Forks:** 120 | **Recent Stars** 76
+
+### 项目简介
+
+Cloudflare Agents：在 Cloudflare 平台上构建和部署 AI 代理
+
+Cloudflare Agents 是一个正在积极开发中的项目，旨在提供一个构建智能、有状态 AI 代理的基础框架。这些代理能够在网络边缘保持持久状态和记忆，进行实时通信，处理和学习交互，并在全球范围内自主运行。该框架还具备在空闲时休眠并在需要时唤醒的能力。
+
+项目愿景是创建一个强大的 AI 代理开发平台，核心功能包括状态管理、实时 WebSocket 通信、HTTP 端点和路由以及基础的 AI 聊天功能。目前正在开发的功能则涵盖了更高级的记忆系统、WebRTC 支持（用于音频/视频）、电子邮件集成、评估框架、增强的可观测性以及自助部署指南。
+
+开发者可以通过简单的命令行工具快速创建新项目或将 Agents 集成到现有项目中。详细文档包括核心框架指南、Anthropic Patterns（构建高效代理的模式）、Human in the Loop（人机协作）以及一个 Playground 示例，以帮助开发者入门。
+
+该项目遵循 MIT 许可证，并欢迎社区贡献，包括提供新示例、改进文档、修复错误和提出功能建议。Cloudflare Agents 利用 Cloudflare 的边缘网络优势和 Durable Objects 等技术，为构建下一代智能应用提供了基础。
+
+---
+
+## dice
+
+DiceDB 是一个开源、快速、响应式、内存数据库，针对现代硬件进行了优化。
+
+**作者:** [DiceDB](https://github.com/DiceDB.png) | **仓库:** [Github 链接](https://github.com/DiceDB/dice)
+**语言:** Go | **Stars:** 10299
+**Forks:** 1358 | **Recent Stars** 46
+
+### 项目简介
+
+DiceDB 是一个开源的内存数据库项目，代码托管在 GitHub 上（DiceDB/dice），遵循 BSD 3-Clause 许可协议。该数据库设计宗旨是针对现代硬件进行优化，提供快速、响应式的性能，并支持通过查询订阅实现实时数据更新，旨在提供比现有解决方案更高的吞吐量和更低的延迟。
+
+项目提供了多种入门方式，其中最简单方便的是使用 Docker 容器部署，其 Docker 镜像已发布。用户可以通过一条简单的 Docker 命令启动并运行 DiceDB 服务器。此外，项目还提供了命令行界面（CLI）工具，可以使用 cURL 脚本进行安装，方便与 DiceDB 实例进行交互。对于想要从源代码编译或参与项目开发的贡献者，项目提供了详细的贡献指南（CONTRIBUTING/README.md）和 Discord 社区，方便开发者协作交流。
+
+DiceDB 的 GitHub 页面显示了其活跃的开发状态，包括最新的提交记录、文件结构以及贡献者列表。项目积极寻求社区的支持和赞助，并在 GitHub Sponsors 上开通了赞助渠道。项目的开发计划清晰，目标是成为一个具有强大愿景和发展路线图的数据库解决方案。
+
+总的来说，DiceDB 是一个专注于高性能和响应能力的内存数据库，易于上手和部署，并积极构建开发者社区，旨在成为现代应用栈中的重要组成部分。
+
+---
+
+## zapret-discord-youtube
+
+**作者:** [Flowseal](https://github.com/Flowseal.png) | **仓库:** [Github 链接](https://github.com/Flowseal/zapret-discord-youtube)
+**语言:** Batchfile | **Stars:** 12574
+**Forks:** 838 | **Recent Stars** 47
+
+### 项目简介
+
+Windows下绕过Discord和YouTube封锁的“即插即用”工具
+
+这份内容主要介绍了一个名为“zapret-discord-youtube”的项目。该项目旨在为Windows用户提供一种简便的解决方案，以绕过对Discord和YouTube的封锁。作者将其描述为一种“Plug & Play”的绕过方式。
+
+项目是基于[zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle)项目的Windows版本实现的，并特别提到了项目中的二进制文件（位于`bin`文件夹）均来源于zapret-win-bundle。项目提醒用户，该工具使用了WinDivert，这是一种流量拦截和过滤工具，类似于Linux下的iptables和NFQUEUE，在Windows环境下实现类似功能。由于其性质，WinDivert可能被某些杀毒软件误报为高风险或黑客工具，建议用户在遇到问题时将其添加至例外或禁用杀毒软件。
+
+使用方法简单，只需下载最新版本的压缩包，解压到一个不含中文或特殊字符的路径下，然后运行相应的`.bat`文件即可。项目提供了几个不同的启动文件：
+
+- `discord.bat`：专门用于绕过Discord的封锁。
+- `general.bat`：同时用于绕过Discord和YouTube的封锁，此外还提供了多个`general (ALT).bat`等替代策略。
+- `cloudflare_switch.bat`：用于控制是否绕过Cloudflare的封锁（通过修改列表，无需重启）。
+- `service.bat`：用于安装/卸载服务实现开机自启、检查服务状态、诊断和检查更新。
+
+内容还包含了一个常见的“问题与解决方案”部分，涵盖了Discord/YouTube无法工作、绕过整体失效、文件无法运行、Windows 7下驱动签名问题、与VPN冲突以及服务删除不彻底等问题，并提供了相应的排查和解决步骤，包括更新文件、尝试其他策略、禁用VPN的TUN功能以及手动通过命令行管理WinDivert服务。
+
+最后，项目说明了如何修改列表文件（`list-general.txt`和`list-discord.txt`）来添加更多需要绕过的地址，并强调更新列表后需要重启工具。项目采用MIT许可证，并对项目的贡献者以及原项目zapret的开发者表示感谢。项目在GitHub上获得了超过1.2万个星，活跃度较高。
+
+---
+
+## Qwen-Agent
+
+基于Qwen >= 2.0的代理框架和应用，包含函数调用、代码解释器、RAG和Chrome扩展
+
+**作者:** [QwenLM](https://github.com/QwenLM.png) | **仓库:** [Github 链接](https://github.com/QwenLM/Qwen-Agent)
+**语言:** Python | **Stars:** 7722
+**Forks:** 658 | **Recent Stars** 190
+
+### 项目简介
+
+Qwen-Agent：基于通义模型的智能体开发框架
+
+Qwen-Agent 是一个基于通义 Qwen 2.0 及更高版本大型语言模型（LLM）构建的开源智能体开发框架。该框架利用 Qwen 的指令遵循、工具使用、规划和记忆能力，旨在简化LLM应用的开发。它提供了丰富的功能，包括函数调用（Function Calling）、代码解释器（Code Interpreter）、检索增强生成（RAG）以及浏览器扩展（Chrome extension）。
+
+Qwen-Agent 不仅是一个框架，还包含了一些示例应用，例如浏览器助手（Browser Assistant）、代码解释器和自定义助手（Custom Assistant）。目前，Qwen-Agent 已经作为通义千问聊天（Qwen Chat）的后端使用。
+
+项目提供详细的入门指南，包括如何从 PyPI 或源代码安装，以及如何配置模型服务（支持阿里云灵积 DashScope 服务或自部署的 OpenAI 兼容 API 服务）。框架的核心组件如 LLMs 和 Tools 提供基础功能，并可以组合构建更高级的 Agents。开发者可以方便地添加自定义工具，并利用内置工具，如代码解释器，来扩展智能体的能力。文档中还提供了一个详细的 Python 示例，展示了如何创建一个能够读取 PDF 文件、使用自定义工具和内置工具的智能体，并介绍了如何运行交互式聊天或快速启动基于 Gradio 的 GUI 界面。
+
+对于常见问题（FAQ），项目解答了关于 MCP（Model Context Protocol）的使用、函数调用支持以及如何处理超长文档问答的问题。特别强调了 Qwen-Agent 在处理超长文档（如 1M tokens）问答方面的优势，通过快速 RAG 解决方案和高效智能体，在测试中表现优于原生长上下文模型。
+
+总而言之，Qwen-Agent 是一个功能强大且灵活的框架，为开发者提供了构建基于 Qwen 模型的高级智能体应用的全面工具和资源，特别在工具集成和长文本理解方面具有显著优势。需要注意的是，内置的代码解释器未沙箱化，开发者应谨慎使用，避免用于生产环境或执行危险任务。
+
+---
+
+## system-design-primer
+
+学习如何设计大型系统。为系统设计面试做准备。包含 Anki 闪卡。
+
+**作者:** [donnemartin](https://github.com/donnemartin.png) | **仓库:** [Github 链接](https://github.com/donnemartin/system-design-primer)
+**语言:** Python | **Stars:** 297799
+**Forks:** 49493 | **Recent Stars** 116
+
+### 项目简介
+
+大规模系统设计入门与面试准备
+
+这份内容是一个关于系统设计的大规模资源集合，旨在帮助工程师学习如何设计可扩展系统并为系统设计技术面试做准备。核心内容组织有序，涵盖了系统设计的基本概念、常用技术及应用，并且提供了丰富的学习资源和面试指导。
+
+内容主要分为三个部分：系统设计基础，涵盖性能与可扩展性、延迟与吞吐量、可用性与一致性（CAP定理）、各种一致性模式和可用性模式、DNS、CDN、负载均衡、反向代理、应用层（微服务、服务发现）、数据库（关系型数据库和NoSQL数据库的各种技术）、缓存策略、异步通信（消息队列、任务队列）以及网络通信协议（HTTP, TCP, UDP, RPC, REST）等基础知识，并分析了各自的优缺点和权衡。
+
+其次，内容提供了系统设计的面试准备指导，包括如何应对系统设计面试问题，从用例、约束、假设的识别，到高层次设计、核心组件设计，再到如何扩展设计和进行估算。此外，还提供了Anki闪卡，帮助用户记忆关键概念。
+
+最后，内容精选了多个常见系统设计面试问题及其解决方案，以及真实世界的系统架构案例和各公司工程博客链接，供读者参考学习。同时也包含面向对象设计面试题。
+
+总而言之，这份内容是一个全面且实用的学习资源，无论是想提升系统设计能力还是准备技术面试的工程师，都能从中获益。
+
+---
+
+## open-webui
+
+用户友好的AI界面（支持Ollama、OpenAI API等）
+
+**作者:** [open-webui](https://github.com/open-webui.png) | **仓库:** [Github 链接](https://github.com/open-webui/open-webui)
+**语言:** JavaScript | **Stars:** 92793
+**Forks:** 11759 | **Recent Stars** 379
+
+### 项目简介
+
+Open WebUI是一个用户友好、功能丰富且可扩展的自托管AI平台，主要设计用于离线操作。它集成了多种大型语言模型(LLM)运行器，包括Ollama和兼容OpenAI API的服务，并内置了用于检索增强生成（RAG）的推理引擎，使其成为一个强大的AI部署方案。核心功能包括易于使用的Docker或Kubernetes安装、支持Ollama和多种OpenAI兼容API（如LMStudio、GroqCloud等）、精细的权限管理和用户分组、响应式和渐进式Web应用（PWA）设计。该平台还具备完整的Markdown和LaTeX支持、语音/视频通话功能、模型构建器、本地RAG文档集成以及网络搜索和网页浏览能力。此外，它还支持图像生成（通过AUTOMATIC1111、ComfyUI或DALL-E）、多模型并行对话、基于角色的访问控制（RBAC）和多语言支持。Open WebUI还提供了管道（Pipelines）插件框架，允许集成自定义逻辑和Python库，例如函数调用、速率限制、使用情况监控和消息过滤。项目持续更新并提供了详细的安装指南和故障排除支持，License为BSD-3-Clause。
+
+---
+
+## langwatch
+
+开放式大型语言模型运维平台 - 跟踪、分析、评估、数据集和Prompt优化 ✨
+
+**作者:** [langwatch](https://github.com/langwatch.png) | **仓库:** [Github 链接](https://github.com/langwatch/langwatch)
+**语言:** TypeScript | **Stars:** 1663
+**Forks:** 126 | **Recent Stars** 71
+
+### 项目简介
+
+LangWatch：开放的 LLM Ops 平台
+
+LangWatch 是一个开源平台，致力于**观测、评估和优化**大型语言模型（LLM）和 Agent 应用。它提供了一整套功能，帮助开发者更好地理解、改进和管理他们的 LLM 工作流程。
+
+平台的核心功能包括：
+
+1.  **可观测性 (Observability)**：基于 OpenTelemetry 标准，为 LLM 应用添加追踪功能，提供实时的应用表现数据。
+2.  **评估 (Evaluation)**：支持对生产或合成数据集进行实时和离线评估，并比较不同提示词、模块、提供商或整个 LLM 流水线的性能。
+3.  **数据集 (Datasets)**：可自动从追踪消息生成或手动上传，用于平台内的各种评估。
+4.  **优化工作室 (Optimization Studio)**：提供低/无代码界面，加速构建和运行评估，同时支持更灵活的 DSL。
+5.  **提示管理与优化 (Prompt Management & Optimization)**：实现提示词的版本控制，通过数据集测试修改，并优化实际性能。还支持使用 DSPy 的 MIPROv2 进行自动优化。
+6.  **标注 (Annotations)**：将领域专家的输入与智能工作流结合，加速高质量数据创建，以便构建更准确、更强大的 AI 模型。
+
+LangWatch 具有框架和 LLM 无关的特性，通过 OpenTelemetry 支持包括 LangGraph、DSPy、Langflow、Flowise 等框架，以及 OpenAI、Azure、Bedrock、Gemini 在内的多种 LLM 提供商。平台强调使用开放和社区驱动的标准，以适应快速变化的 AI 生态系统。
+
+**部署方式**多样，支持 Docker 本地部署（提供快速上手示例）、LangWatch Cloud 服务、完全自托管 (OnPrem) 和混合部署 (OnPrem data)。
+
+为了方便用户快速入门，平台提供了 Python 和 JavaScript 的 SDK，并支持对 OpenAI、Azure、LiteLLM 等 API 的自动追踪。
+
+LangWatch 积极维护社区，提供 Discord 支持、GitHub 问题反馈和企业级支持，并欢迎社区贡献。在安全性方面，平台符合 GDPR 和 ISO 27001 标准，并建立了漏洞披露机制。
+
+总体而言，LangWatch 通过提供全面的观测、评估和优化工具，帮助开发者更有效地开发、部署和管理基于 LLM 的应用，提升应用性能和可靠性。
