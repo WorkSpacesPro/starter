@@ -24,7 +24,7 @@
   --color-primary-800: oklch(0.443 0.11 240.79);
   --color-primary-900: oklch(0.391 0.09 240.876);
   --color-primary-950: oklch(0.293 0.066 243.157);
-  /* 
+  /*
   --color-primary-50: oklch(0.987 0.022 95.277);
   --color-primary-100: oklch(0.962 0.059 95.617);
   --color-primary-200: oklch(0.924 0.12 95.746);
@@ -89,26 +89,46 @@
     border-radius: var(--radius-sm);
     outline-color: var(--color-primary-500);
   }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Add scroll-padding-top to prevent sticky header overlap */
+  html {
+    scroll-padding-top: 5rem;
+    /* Adjust this value based on your header height */
+    scroll-behavior: smooth;
+  }
 }
 
 @layer utilities {
   .prose {
     & a {
       color: var(--color-primary-500);
+
       &:hover {
         color: var(--color-primary-600);
       }
+
       & code {
         color: var(--color-primary-400);
       }
     }
+
     & :where(h1, h2) {
       font-weight: 700;
       letter-spacing: var(--tracking-tight);
     }
+
     & h3 {
       font-weight: 600;
     }
+
     & :where(code):not(pre code) {
       color: var(--color-indigo-500);
     }
@@ -117,13 +137,16 @@
   .prose-invert {
     & a {
       color: var(--color-primary-500);
+
       &:hover {
         color: var(--color-primary-400);
       }
+
       & code {
         color: var(--color-primary-400);
       }
     }
+
     & :where(h1, h2, h3, h4, h5, h6) {
       color: var(--color-gray-100);
     }
@@ -155,8 +178,10 @@
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
@@ -294,18 +319,10 @@ input:-webkit-autofill:focus {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
 .prose h3 {
   @apply text-base font-semibold;
 }
+
 .prose h2 {
   @apply text-primary-500 text-xl font-bold;
 }

@@ -36,7 +36,7 @@ export default function TableOfContents({
   const scrollToHeading = (url: string) => {
     const target = document.querySelector(url)
     if (target) {
-      const headerOffset = 100 // 顶部导航栏的高度 + 一些额外间距
+      const headerOffset = 80 // 顶部导航栏的高度 + 一些额外间距
       const elementPosition = target.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
@@ -54,11 +54,7 @@ export default function TableOfContents({
 
   return (
     <nav
-      className={cn(
-        'toc',
-        className,
-        isMobile ? 'mobile-toc' : ''
-      )}
+      className={cn('toc', className, isMobile ? 'mobile-toc' : '')}
       aria-label="Table of contents"
     >
       <ul className="space-y-2">
