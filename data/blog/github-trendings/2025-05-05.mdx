@@ -1,0 +1,292 @@
+---
+title: Github Daily Trending
+date: 2025-05-05
+cover: https://hub-image.moreve.net/files/images/github-trending/2025-05-05.png
+tags: [AI前沿, 开源项目, Web技术, 开发工具]
+summary: 这份内容是多个开源项目摘要的集合，涵盖了从实时换脸（Deep-Live-Cam）、新型版本控制系统（jj）、AI代理工具平台（ACI.dev）、Cloudflare的模型上下文协议服务器合集（mcp-server-cloudflare）、到分享优质开源项目的HelloGitHub月刊、信任最小化跨链桥协议（union）、开源AI可穿戴设备（omi）、用于运行AI生成代码的基础设施（daytona）、独立网页浏览器（LadybirdBrowser）、Node.js JavaScript运行时、以及3D打印机固件（Klipper）和免费开源3D建模软件（FreeCAD）及免费编程学习资源库（free-programming-books）等。这些项目来自不同的作者和组织，使用多种编程语言开发，反映了当前技术领域的多元化和开源社区的活跃性，提供了从底层技术到应用平台的广泛解决方案和学习资源。
+---
+
+## hacksider / Deep-Live-Cam
+
+只需单张图片即可实现实时换脸和一键式视频深度伪造
+
+**作者:** [hacksider](https://github.com/hacksider) | **仓库:** [Github 链接](https://github.com/hacksider/Deep-Live-Cam) | **语言:** Python
+
+### 项目简介
+
+---
+
+## jj-vcs / jj
+
+一个既简单又强大的Git兼容版本控制系统
+
+**作者:** [jj-vcs](https://github.com/jj-vcs) | **仓库:** [Github 链接](https://github.com/jj-vcs/jj) | **语言:** Rust
+
+### 项目简介
+
+新型版本控制系统 Jujutsu (jj)：简洁且强大
+
+Jujutsu (**jj**) 是一种新型的版本控制系统（VCS），旨在提供兼具简洁性和强大功能的用户体验。它的一个核心特点是与 Git 兼容，目前将 Git 仓库作为其默认存储后端，这意味着用户可以与现有的 Git 工具和远程仓库无缝协作。Jujutsu 的设计灵感来自多种流行的 VCS，包括 Git（强调速度和互操作性）、Mercurial 和 Sapling（借鉴了 revset 语言、无感索引/暂存区、匿名的分支以及强大的历史重写原语），以及 Darcs（将冲突视为独立对象）。
+
+Jujutsu 引入了一些创新特性：
+
+1.  **工作副本即提交**：文件的修改会自动记录为一个常规提交，并在每次后续更改时进行修正。这种“快照”设计简化了用户可见的数据模型和内部算法，取代了 Git 的 stash 或暂存区概念。
+2.  **操作日志和撤销**：仓库中的所有操作（包括提交、拉取、推送）都会被记录下来，可以轻松回溯到之前的仓库状态或撤销特定操作。
+3.  **自动变基和冲突解决**：修改提交后，所有后代提交会自动变基到新的提交之上。如果解决了冲突，冲突的解决方案也会传播到后代。这是一种透明的 `git rebase --update-refs` 和 `git rerere` 组合实现。
+
+Jujutsu 还包含一些虽尚处于实验阶段但很有潜力的特性，例如在并发场景下的安全复制，即使在使用 Dropbox 或 rsync 等工具时也能确保仓库状态不被破坏，只会暴露冲突供用户解决。
+
+该项目目前仍处于相对早期的发展阶段，但核心开发者已在日常工作中全面使用 Jujutsu。虽然存在一些待完善的功能和潜在的向后不兼容变更，但项目团队正积极提供透明升级或辅助工具。用户可以通过官方网站、教程、 Git 比较文档等资源了解和入门 Jujutsu，并通过 Discord、GitHub Discussion 和 IRC 频道与开发者社区交流和贡献。
+
+值得注意的是，Jujutsu 最初由 Google 员工作为个人项目启动，目前有多位 Google 工程师参与开发，但它并非 Google 的正式产品。项目采用 Apache 2.0 许可。
+
+---
+
+## aipotheosis-labs / aci
+
+ACI.dev 是一个开源平台，通过多租户认证、细粒度权限、直接函数调用或统一 MCP 服务器访问，将您的 AI 代理连接到 600 多个工具集成
+
+**作者:** [aipotheosis-labs](https://github.com/aipotheosis-labs) | **仓库:** [Github 链接](https://github.com/aipotheosis-labs/aci) | **语言:** Python
+
+### 项目简介
+
+ACI.dev是一个开源平台，旨在连接AI代理与广泛的工具集成。其核心功能是为AI代理提供意图感知（intent-aware）的能力，使其能够安全、动态地发现并调用超过600种不同的工具集成。平台支持多租户认证和细粒度权限控制，确保不同用户和组织的AI代理都能安全地访问所需资源。
+
+ACI.dev提供了两种访问方式：通过统一的Model-Context-Protocol (MCP)服务器或通过轻量级的Python SDK进行直接函数调用。这意味着开发者可以根据自己的需求和现有框架选择最适合的集成方式。与传统方式相比，使用ACI.dev可以帮助开发者避免为每个工具单独编写OAuth流程和API客户端，显著简化了AI代理的构建过程。
+
+该平台主要解决了构建生产级AI代理时的基础设施难题，包括大规模认证、在不超载LLM上下文窗口的情况下发现大量工具、通过自然语言建立权限边界以及提供没有供应商锁定的框架和模型无关的解决方案。常见的应用场景包括个人助理聊天机器人、研究代理、外呼销售代理和客户支持代理等。
+
+ACI.dev完全开源，并在Apache 2.0许可证下发布，涵盖了后台、开发者门户和各种工具集成。项目提供了详细的本地开发指南和贡献方式，并欢迎社区成员提出新的集成需求。Star ACI.dev是获取最新版本更新的推荐方式。
+
+---
+
+## cloudflare / mcp-server-cloudflare
+
+无需标题
+
+**作者:** [cloudflare](https://github.com/cloudflare) | **仓库:** [Github 链接](https://github.com/cloudflare/mcp-server-cloudflare) | **语言:** TypeScript
+
+### 项目简介
+
+Cloudflare MCP 服务器项目概览
+
+该项目是 Cloudflare 在 GitHub 上托管的一个公开仓库，核心内容是实现一系列模型上下文协议（Model Context Protocol, MCP）服务器。MCP 是一种新的标准化协议，旨在管理大型语言模型（LLM）与外部系统之间的上下文信息交互。通过这些 MCP 服务器，用户可以使用支持 MCP 协议的客户端（如 Certain MCP 客户端）通过自然语言与其 Cloudflare 账户进行交互。
+
+该仓库提供了多个针对 Cloudflare 不同服务的 MCP 服务器，包括用于获取最新 Cloudflare 参考信息的文档服务器、用于构建 Workers 应用的 Workers Bindings 服务器、用于调试和分析应用日志的 Observability 服务器、提供全球互联网流量洞察的 Radar 服务器、用于创建沙盒开发环境的 Container 服务器、用于获取网页内容和截图的 Browser rendering 服务器、用于查看 Logpush 任务健康状况的 Logpush 服务器、用于搜索 AI Gateway 日志的 AI Gateway 服务器、用于管理 AutoRAG 文档的 AutoRAG 服务器、用于查询审计日志的 Audit Logs 服务器，以及用于优化 DNS 和监控数字体验的 DNS Analytics 和 Digital Experience Monitoring 服务器，还有用于识别 SaaS 应用安全配置错误的 Cloudflare One CASB 服务器。每个服务器都提供了对应的 URL，方便客户端连接。
+
+用户 accessing these remote MCP servers 可以通过支持远程 MCP 服务器的客户端直接添加 URL，或者对于尚不支持的客户端，可以使用 `mcp-remote` 工具配置访问。项目还提供了贡献指南，以及针对一些常见问题（如 Claude 回复中断）的排查建议。
+
+该项目采用 Apache-2.0 许可证，目前拥有 1.8k stars 和 130 forks，主要使用 TypeScript、JavaScript、CSS 和 HTML 进行开发。
+
+---
+
+## 521xueweihan / HelloGitHub
+
+分享 GitHub 上有趣、入门级的开源项目
+
+**作者:** [521xueweihan](https://github.com/521xueweihan) | **仓库:** [Github 链接](https://github.com/521xueweihan/HelloGitHub) | **语言:** Python
+
+### 项目简介
+
+HelloGitHub项目概要
+
+这份内容摘自 GitHub 上的一个名为 "HelloGitHub" 的热门开源项目。该项目致力于每月精选并分享 GitHub 上有趣、入门级的开源项目，旨在通过激发学习者兴趣，帮助他们感受开源的魅力并爱上开源。
+
+HellloGitHub 的内容形式是月刊，每月 28 号发布更新。内容涵盖多个方面，包括有趣且适合新手学习的开源项目、有价值的开源书籍、实战项目、以及企业级的开源项目。项目的核心理念是“兴趣是最好的老师”，通过提供 다양한类型的开源项目，让不同背景和水平的用户都能找到感兴趣的内容。
+
+内容中提供了项目官网链接 hellogithub.com 和 HelloGitHub 的公众号二维码，方便用户获取更好的阅读体验。此外，页面还列出了自 2025 年 4 月 29 日更新的第 109 期以来的所有历史月刊链接，方便用户回顾和查阅。
+
+该项目也欢迎用户推荐或自荐项目，并鼓励成为项目的贡献者。项目还获得了一些赞助商的支持，包括 UCloud、又拍云、OpenIM 和 Apifox 等。项目采用“署名-非商业性使用-禁止演绎 4.0 国际”知识共享许可协议。
+
+总体而言，HelloGitHub 是一个活跃的开源社区项目，通过定期分享高质量且适合入门的开源资源，有效降低了开源学习的门槛，帮助更多人了解、参与并受益于开源世界。
+
+---
+
+## unionlabs / union
+
+信任最小化、零知识跨链桥协议：专为抗审查、极高安全性和去中心化金融设计
+
+**作者:** [unionlabs](https://github.com/unionlabs) | **仓库:** [Github 链接](https://github.com/unionlabs/union) | **语言:** Rust
+
+### 项目简介
+
+Union 是一个专注于提供无需信任、零知识的区块链跨链桥接协议。其核心目标在于确保极高的安全性和抗审查能力，同时应用于去中心化金融领域。
+
+Union 采用“共识验证”（Consensus Verification）机制，不依赖于中心化的第三方、预言机、多重签名或 MPC 等组件，从而最大化地降低对信任的需求。它支持与Cosmos 生态链通过 IBC 协议进行兼容，同时也连接了以太坊、Berachain、Arbitrum 等 EVM 兼容链。
+
+该协议的设计包含了多个核心组件，以支持其跨链功能和整体生态系统的运行。主要组件包括处理节点实现的 `uniond` (Go语言)、负责零知识证明生成的 `galoisd` (Go 和 Gnark)、高性能的跨生态中继器 `voyager` (Rust)、支持多链、通用消息传递的链索引器 `hubble` (Rust)。此外，还有服务于 Cosmos 生态的 `cosmwasm` 合约栈和各种生态系统的轻客户端 (Rust)，用于生产环境的节点管理工具 `unionvisor` (Rust)，以及为 Cosmos 链提供代币的水龙头服务 `drip` (Rust)。在 EVM 生态方面，Union 提供了基于 Solidity 的智能合约栈 `evm`。为了方便用户交互和开发者集成，Union 还提供了基于 TypeScript 和 Svelte 的用户界面 `app`，基于 TypeScript 和 Astro 的官方网站 `site`，以及用于与协议交互的 `TypeScript SDK`。
+
+项目的开发和构建流程利用了 Nix 工具，旨在实现组件的可重现构建和依赖管理。官方文档提供了关于项目概念和各组件的详细信息。协议的未来升级、连接和配置变动等将通过去中心化治理来决策，以确保项目发展方向与用户、验证者和运营者的利益保持一致。
+
+Union 项目在 GitHub 上拥有较高的关注度，表明其在社区中的影响力和潜力。代码库主要使用 Rust 语言编写，同时包含 Move, TypeScript, Solidity, Svelte 和 Nix 等多种其他语言。
+
+---
+
+## BasedHardware / omi
+
+AI可穿戴设备：戴上、说话、转录、自动化
+
+**作者:** [BasedHardware](https://github.com/BasedHardware) | **仓库:** [Github 链接](https://github.com/BasedHardware/omi) | **语言:** C
+
+### 项目简介
+
+Omi：开源AI穿戴设备的文本摘要
+Omi是一款领先的开源AI穿戴设备，旨在通过捕捉对话并自动进行转录、总结和执行动作来增强用户体验。只需将其连接到移动设备，用户即可在任何地方获得高质量的会议、聊天和语音备忘录转录。该项目包含Omi设备本身、Omi Glass（可能的智能眼镜形态）、移动应用程序、AI角色（基于Web的）以及相关的SDK。
+
+快速入门指南提供了简单的两分钟上手流程：下载Omi App，创建一个webhook并粘贴其URL，然后在App中依次进行“探索 => 创建一个App”，选择功能并粘贴Webhook URL，最后安装App即可。用户开始说话后，即可在webhook.site上看到实时转录。
+
+项目代码仓库包含了Omi设备的硬件部分、omi glass相关代码、移动应用代码（使用 Dart/Flutter 开发）、AI角色（使用Next.js开发）以及各种SDK。项目提供详细的文档，涵盖项目介绍、移动App设置、购买指南、设备组装和固件安装，以及如何在1分钟内创建自己的App。
+
+Omi项目鼓励社区贡献，提供了贡献指南、付费悬赏任务、当前开放的议题列表，并邀请开发者加入Discord社区进行交流。此外，项目支持构建自己的插件和集成。
+
+Omi项目采用MIT许可证。项目的技术栈主要包括C、Dart、Python、C++和TypeScript等语言。
+
+项目在GitHub上获得了5.6k颗星和789个分支，拥有128位贡献者，并且定期发布版本更新。该项目是关于 AI、可穿戴设备、语音转录、总结、移动应用和开源硬件的热门话题。
+
+---
+
+## daytonaio / daytona
+
+Daytona：运行AI生成代码的安全弹性基础设施
+
+**作者:** [daytonaio](https://github.com/daytonaio) | **仓库:** [Github 链接](https://github.com/daytonaio/daytona) | **语言:** TypeScript
+
+### 项目简介
+
+Daytona: 安全灵活的AI生成代码运行基础设施。
+
+这是一份关于 Daytona 项目仓库的概述，Daytona 被定义为安全且弹性可伸缩的用于运行AI生成代码的基础设施。该项目提供了文档、错误报告、特性请求以及加入Slack社区和关注X（原Twitter）的链接。项目的核心功能在于提供一个隔离的环境（Sandbox）来安全执行由AI生成的代码，降低对现有基础设施的风险。它强调闪电般的快速Sandbox创建、隔离的运行时环境、即将推出的并行化能力、提供的文件、Git、LSP和执行API等编程控制、无限期的持久性支持以及对OCI/Docker镜像的兼容性。
+
+为了方便开发者使用，Daytona 提供了Python和TypeScript两种SDK。文档中包含了快速入门指南，指导用户创建账户、生成API密钥并开始使用SDK。其中提供了如何使用Python和TypeScript SDK初始化客户端、创建Sandbox实例、如何在Sandbox内安全地运行代码以及如何清理Sandbox的代码示例。例如，Python SDK的代码示例展示了如何安装SDK，初始化Daytona客户端，创建一个Python语言的Sandbox，在其中运行打印“3和4的和”的代码，并处理结果。同样，TypeScript SDK也提供了相应的安装和代码示例。
+
+该项目是开源的，遵循AGPL-3.0许可证，并鼓励社区贡献。贡献者指南详细说明了参与贡献的流程和要求。仓库信息显示了项目的星标数（19.2k）、分支数（10）、标签数（94）和贡献者（185）。主要开发语言包括TypeScript、Python、JavaScript和Go。
+
+总而言之，Daytona致力于解决AI生成的代码可能带来的安全风险和运行效率问题，通过提供一个隔离、弹性、可编程且兼容现有容器技术的平台，使开发者能够安全、高效地运行和测试AI生成的代码。
+
+---
+
+## LadybirdBrowser / ladybird
+
+真正独立的网络浏览器
+
+**作者:** [LadybirdBrowser](https://github.com/LadybirdBrowser) | **仓库:** [Github 链接](https://github.com/LadybirdBrowser/ladybird) | **语言:** C++
+
+### 项目简介
+
+Ladybird：一个真正独立的网页浏览器
+
+这份摘要介绍了 Ladybird 项目，一个致力于构建真正独立网页浏览器的开源项目。与许多基于现有引擎（如 Chromium 或 Gecko）的浏览器不同，Ladybird 正在开发自己的全新网页引擎。目前， Ladybird 处于 Pre-alpha 阶段，主要适用于开发者进行测试和贡献。
+
+Ladybird 采用多进程架构，包含主 UI 进程、多个 WebContent 渲染进程、图像解码进程和请求服务进程。其中，图像解码和网络连接在独立进程中处理，以增强对恶意内容的鲁棒性。每个标签页也有自己的独立渲染进程，并与系统其余部分进行沙盒隔离，旨在提高安全性。
+
+项目的核心组件许多继承自 SerenityOS，一个类 Unix 开源操作系统项目。这些组件包括 LibWeb（网页渲染引擎）、LibJS（JavaScript 引擎）、LibWasm（WebAssembly 实现）、LibCrypto/LibTLS（密码学和 TLS）、LibHTTP（HTTP/1.1 客户端）、LibGfx（2D 图形库、图像解码和渲染）、LibUnicode（Unicode 和区域设置支持）、LibMedia（音频和视频播放）、LibCore（事件循环、操作系统抽象层）以及 LibIPC（进程间通信）。项目的开发语言主要为 C++、HTML 和 JavaScript，也包含少量 CMake、Objective-C++ 和 Swift。
+
+项目提供了详细的构建说明文档，并支持在 Linux、macOS、Windows (通过 WSL2) 以及其他多种类 Unix 系统上运行。欢迎开发者通过 Discord 社区参与讨论，并参考贡献指南报告问题和提交代码。Ladybird 项目遵循 2-clause BSD 许可协议。
+
+---
+
+## nodejs / node
+
+Node.js JavaScript 运行时 ✨🐢🚀✨
+
+**作者:** [nodejs](https://github.com/nodejs) | **仓库:** [Github 链接](https://github.com/nodejs/node) | **语言:** JavaScript
+
+### 项目简介
+
+Node.js JavaScript runtime 项目概览与贡献指南
+
+该内容是关于 Node.js JavaScript 运行环境的 GitHub 仓库页面的纯文本提取和分析。Node.js 是一个开源、跨平台的 JavaScript 运行环境，其官方网站是 nodejs.org。项目采用开放式治理模式，并由 OpenJS Foundation 提供支持。项目鼓励贡献者以协作方式推动项目发展，强调建设性的意见交流和妥协。内容明确指出项目遵循《行为准则》。
+
+项目仓库中包含了源代码、文档、测试等重要文件。文件列表展示了各个目录和最新提交信息，例如构建配置 (.configurations, .devcontainer, .github)，以及针对安卓、基准测试、依赖、文档、lib、src 和测试相关的代码和配置。同时也列出了项目级的重要文件，如构建脚本 (BUILDING.md, Makefile)、变更日志 (CHANGELOG.md)、行为准则 (CODE_OF_CONDUCT.md)、贡献指南 (CONTRIBUTING.md)、治理模式 (GOVERNANCE.md) 和安全政策 (SECURITY.md)。
+
+文档部分详细介绍了 Node.js 的支持方式、发布类型（Current、LTS 和 Nightly）。Current 版本每六个月发布一次主版本，分为支持八个月和后续转为 LTS 的类型。LTS 版本是长期支持版本，注重稳定性和安全性，具有特定的生命周期。Nightly 版本是每日构建版本，不建议在生产环境中使用。所有 Current 和 LTS 发布都遵循语义版本控制，并由发布团队签署。内容提供了下载各种版本二进制文件、安装程序、源代码压缩包以及 API 文档的链接，并详细说明了如何验证下载文件的完整性，包括使用 SHA256 校验和和 GPG 签名。
+
+对于希望贡献到 Node.js 项目的开发者，内容指引他们参考贡献指南 (CONTRIBUTING.md)、理解工作组和战略倡议，以及技术价值和优先级。最后，内容列出了当前的 Node.js 项目团队成员，包括技术指导委员会（TSC）的投票成员和普通成员，以及贡献者和问题分类员。 TSC 的成员信息中包含 GitHub 用户名、姓名和联系邮箱，并区分了活跃成员和荣誉成员。还特别提到了安全发布管理员及其所属公司，强调了公司在安全发布中的支持作用。内容最后指出了 Node.js 使用 MIT 许可证，并包含了第三方库的许可证信息，可在 LICENSE 文件中查阅。
+
+总体而言，这份内容清晰地概述了 Node.js 项目的核心代码库结构、开发和发布流程、社区治理模式、贡献方式以及项目团队成员信息，是对 Node.js 项目的全面介绍。
+
+---
+
+## MODSetter / SurfSense
+
+NotebookLM / Perplexity / Glean 的开源替代品，连接外部资源如搜索引擎 (Tavily, Linkup)、Slack、Linear、Notion、YouTube、GitHub 等
+
+**作者:** [MODSetter](https://github.com/MODSetter) | **仓库:** [Github 链接](https://github.com/MODSetter/SurfSense) | **语言:** TypeScript
+
+### 项目简介
+
+---
+
+## Klipper3d / klipper
+
+中文标题
+
+**作者:** [Klipper3d](https://github.com/Klipper3d) | **仓库:** [Github 链接](https://github.com/Klipper3d/klipper) | **语言:** C
+
+### 项目简介
+
+Klipper：3D打印机固件的创新开源项目
+
+这是一份关于 Klipper 项目的概述，Klipper 是一款专注于 3D 打印机的固件。该项目具有强大的功能，它将通用计算机与一个或多个微控制器相结合，以更高效地控制 3D 打印过程。项目鼓励用户安装 Klipper 软件并查阅其功能文档以了解更多信息。
+
+Klipper 软件是免费开源的，遵循 GPL-3.0 许可证。该项目的发展离不开赞助者的慷慨支持。
+
+项目概览信息：
+
+- README 文件提供了项目的基本介绍。
+- 许可证为 GPL-3.0。
+- 项目活动记录了开发进展。
+- 拥有自定义属性。
+- 在 GitHub 上获得了 10.2k 的星标和 5.5k 的分叉（forks），表明其受欢迎程度和社区参与度。
+- 有 363 个关注者。
+- 仓库包含 160 个拉取请求（pull requests）和 1 个待解决的议题（issue）。
+- 最新提交信息展示了近期的代码更新，例如提高某些微控制器（如 stm32h723）的运行频率，以及更新驱动配置和构建测试流程等。
+- Klipper 有 14 个标签（tags）和 5 个活跃分支。
+- 项目有 451 位贡献者，其中列出了部分核心贡献者。
+- 主要开发语言为 C（98.8%），其次是 Python（1.1%）。
+
+项目欢迎用户通过赞助项目链接支持开发者。
+
+总体而言，Klipper 是一个活跃的 3D 打印机固件项目，通过软硬件结合的方式提升打印性能，拥有强大的社区支持和持续的开发更新。
+
+---
+
+## FreeCAD / FreeCAD
+
+这是 FreeCAD 的官方源代码，一款免费的开源多平台 3D 参数化建模软件。
+
+**作者:** [FreeCAD](https://github.com/FreeCAD) | **仓库:** [Github 链接](https://github.com/FreeCAD/FreeCAD) | **语言:** C++
+
+### 项目简介
+
+FreeCAD 是一个免费开源的多平台 3D 参数化建模软件。这个项目的主要目标是创建一个能够设计任何大小的真实世界物体的工具。
+
+FreeCAD 的核心功能包括参数化建模，允许用户通过修改设计历史中的参数轻松修改模型。它可以从二维草图创建三维模型，并能从三维模型中提取细节，用于生产准备好的高质量工程图。该软件广泛适用于产品设计、机械工程和建筑等领域，无论是爱好者、程序员、有经验的 CAD 用户还是学生和教师都能使用。
+
+FreeCAD 支持 Windows、macOS 和 Linux 等多种操作系统。其底层技术基于强大的几何内核 OpenCASCADE、符合 Open Inventor 标准的 3D 场景表示模型 Coin3D 库、提供广泛 API 的 Python 语言以及用于构建图形用户界面的 Qt 框架。
+
+FreeCAD 项目的代码托管在 GitHub 上，拥有大量的星标和分支，显示了其受欢迎度和社区的活跃程度。代码库包含 C++、Python 等多种语言。项目的组织结构清晰，包含用于测试、编译配置文件和构建工具等目录和文件。FreeCAD 的开发活跃，社区也提供了丰富的文档、论坛、问题跟踪器等资源，方便用户获取帮助、报告问题和参与贡献。
+
+用户可以从发布页面、Linux 发行版的软件中心或每周构建页面获取预编译的 FreeCAD 包。对于开发者，项目提供了详细的编译指南。报告问题可以通过论坛、Discord 或 Reddit 进行初期验证，然后参照详细的指南提交到问题跟踪器。FreeCAD 项目得到了 DigitalOcean 和 KiCad Services Corp. 等机构的基础设施支持，并且鼓励开发者通过 FPA 项目申请资助。
+
+总的来说，FreeCAD 是一个功能强大、跨平台、免费开源的 3D 参数化建模软件，拥有活跃的社区支持和持续的开发更新，适用于广泛的设计和工程领域。
+
+---
+
+## EbookFoundation / free-programming-books
+
+📚 免费编程书籍
+
+**作者:** [EbookFoundation](https://github.com/EbookFoundation) | **仓库:** [Github 链接](https://github.com/EbookFoundation/free-programming-books) | **语言:** HTML
+
+### 项目简介
+
+免费编程学习资源集：涵盖多语种、多形式
+
+这份内容主要来自一个名为 "free-programming-books" 的 GitHub 仓库，该仓库致力于收集并分享免费提供的各种编程学习资源。其核心是一个庞大的多语种资源列表，不仅包含免费的编程书籍，还涵盖了速查表、在线课程、互动式编程教程、刷题与算法资源以及播客与屏幕录制教程等多种形式的学习内容。
+
+该仓库的资源按不同类型和语言进行分类，方便用户查找。目前支持多种语言，包括但不限于英语、中文、法语、德语、日语、俄语等数十种语言，体现了其全球化和包容性的特点。用户可以通过其提供的动态搜索网站更便捷地查找所需资源，该网站提供了易于阅读的界面。
+
+项目最初由 StackOverflow 上的某个资源列表演变而来，后迁移至 GitHub 以便于协作更新和维护。目前由 Free Ebook Foundation 负责管理和运作，该基金会是一家致力于推广免费电子书创建和分发的非营利组织，并接受捐赠。
+
+项目的贡献方式明确，欢迎社区成员贡献内容，并提供了详细的贡献指南（CONTRIBUTING）和行为准则（Code of Conduct）。该仓库在 GitHub 上获得了极高的关注度和贡献度，拥有数十万的星标和数千名贡献者，是程序员获取免费学习资料的重要平台。
