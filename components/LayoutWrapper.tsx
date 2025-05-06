@@ -12,6 +12,14 @@ const inter = Inter({
   subsets: ['latin'],
 })
 
+const headerNavLinks = [
+  { href: '/blog', title: 'Blog' },
+  { href: '/tags', title: 'Tags' },
+  { href: '/projects', title: 'Projects' },
+  { href: '/about', title: 'About' },
+  { href: '/newsletter', title: 'Newsletter' },
+]
+
 const LayoutWrapper = ({ children }: Props) => {
   return (
     <SectionContainer>

@@ -1,0 +1,132 @@
+---
+title: 'Next.js入门指南'
+date: '2024-03-26'
+tags: ['next.js', 'react', 'web开发', '前端框架', '入门教程']
+draft: false
+summary: '从零开始学习Next.js，构建现代化的React应用，掌握Next.js的核心特性和基本用法'
+authors: ['default']
+category: 'tech'
+series: 'Next.js系列'
+---
+
+# Next.js入门指南
+
+Next.js是一个用于生产环境的React框架，它让构建全栈Web应用变得简单而高效。本文将带你了解Next.js的基础知识和核心特性。
+
+## 为什么选择Next.js？
+
+Next.js作为React框架的佼佼者，提供了许多开箱即用的特性：
+
+- **零配置** - 内置TypeScript、打包、路由等功能
+- **混合渲染策略** - 支持SSR、SSG、ISR等多种渲染方式
+- **自动代码分割** - 智能的代码分包策略，优化加载性能
+- **文件系统路由** - 基于文件系统的直观路由方案
+- **API路由支持** - 轻松构建后端API接口
+
+## 环境准备
+
+在开始之前，确保你的开发环境满足以下要求：
+
+```bash
+node -v  # >= 18.17.0
+npm -v   # >= 9.6.7
+```
+
+## 创建你的第一个Next.js项目
+
+1. 使用create-next-app创建项目：
+
+```bash
+npx create-next-app@latest my-next-app
+cd my-next-app
+```
+
+2. 在创建过程中，你会看到以下选项：
+
+```plaintext
+✔ Would you like to use TypeScript? ... yes
+✔ Would you like to use ESLint? ... yes
+✔ Would you like to use Tailwind CSS? ... yes
+✔ Would you like to use `src/` directory? ... yes
+✔ Would you like to use App Router? ... yes
+✔ Would you like to customize the default import alias? ... no
+```
+
+## 项目结构解析
+
+```
+my-next-app/
+├── src/
+│   ├── app/          # App Router 目录
+│   ├── components/   # React组件
+│   └── styles/       # 样式文件
+├── public/           # 静态资源
+├── package.json      # 项目配置
+└── next.config.js    # Next.js配置
+```
+
+## 基础路由示例
+
+1. 创建你的第一个页面（app/page.tsx）：
+
+```tsx
+export default function HomePage() {
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-bold">Welcome to Next.js!</h1>
+      <p>开始你的Next.js之旅吧！</p>
+    </div>
+  )
+}
+```
+
+2. 添加一个新路由（app/about/page.tsx）：
+
+```tsx
+export default function AboutPage() {
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-bold">关于我们</h1>
+      <p>这是一个使用Next.js构建的网站。</p>
+    </div>
+  )
+}
+```
+
+## 运行项目
+
+```bash
+npm run dev
+```
+
+访问 http://localhost:3000 查看你的应用。
+
+## 下一步学习
+
+在掌握了这些基础知识后，你可以继续探索：
+
+1. 数据获取方法（下一篇文章主题）
+2. 路由系统进阶（即将推出）
+3. 部署优化（系列最后一篇）
+
+## 常见问题
+
+1. **Q: Next.js适合什么类型的项目？**
+   A: Next.js特别适合需要SEO的网站、大型Web应用、需要服务端渲染的项目等。
+
+2. **Q: 需要先学习React吗？**
+   A: 是的，建议先掌握React基础知识，这样学习Next.js会更轻松。
+
+## 参考资源
+
+- [Next.js官方文档](https://nextjs.org/docs)
+- [React官方文档](https://react.dev)
+- [TypeScript官方文档](https://www.typescriptlang.org/docs)
+
+## 小结
+
+本文介绍了Next.js的基础知识和项目创建流程。在下一篇文章中，我们将深入探讨Next.js的路由系统，敬请期待！
+
+---
+
+> 本文是Next.js系列的第一篇，后续文章将在每周二更新，欢迎关注！

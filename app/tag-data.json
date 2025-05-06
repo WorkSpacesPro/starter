@@ -9,7 +9,7 @@
   "guide": 5,
   "test": 1,
   "hello": 2,
-  "tailwind": 3,
+  "tailwind": 4,
   "holiday": 1,
   "canada": 1,
   "images": 1,
@@ -17,5 +17,12 @@
   "writings": 1,
   "book": 1,
   "reflection": 1,
-  "multi-author": 1
+  "multi-author": 1,
+  "nextjs": 2,
+  "博客开发": 1,
+  "技术选型": 1,
+  "react": 1,
+  "web开发": 1,
+  "前端框架": 1,
+  "入门教程": 1
 }
