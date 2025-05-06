@@ -1,0 +1,368 @@
+---
+title: Github Daily Trending
+date: 2025-05-07
+cover: https://hub-image.moreve.net/files/images/github-trending/2025-05-07.png
+tags: [开源项目, 开发工具, 云与运维, AI前沿]
+summary: '*   **GoogleCloudPlatform / kubectl-ai**: 这个项目是一个由 Google Cloud Platform 开发的 kubectl 插件，利用 AI 让用户可以用自然语言查询和管理 Kubernetes 资源，无需记忆复杂指令。*   **LadybirdBrowser / ladybird**: 这是一个致力于从头开始构建“真正独立”网络浏览器的开源项目，使用自己的引擎，不依赖现有主流浏览器技术，目前仍在早期开发阶段。*   **521xueweihan / HelloGitHub**: 这个项目是一个开源月刊，旨在精选和分享 GitHub 上有趣且适合入门的开源项目，帮助新人快速了解和参与开源世界。*   **awslabs / agent-squad**: 这是一个用于管理多个 AI 代理并处理复杂对话的轻量级框架，能智能路由用户查询到合适的代理并维护会话上下文。*   **unionlabs / union**: 这是一个基于零知识证明、信任最小化的跨链协议，为安全、抗审查的 DeFi 应用设计，实现多链互操作。*   **hacksider / Deep-Live-Cam**: 这个项目提供实时换脸和单张图片生成视频的深度伪造功能，强调负责任和道德使用，内置内容审查。*   **glanceapp / glance**: 这是一个自托管的个性化仪表盘工具，允许用户整合各种信息源（如 RSS, Reddit, 天气等）到统一界面，具有快速、轻量和高度可定制的特点。*   **containerd / containerd**: Containerd 是一个开放、可靠的容器运行时，作为更大型系统的嵌入式组件，负责管理容器的完整生命周期，是 CNCF 的毕业项目。*   **n8n-io / n8n**: n8n 是一个带原生 AI 能力的开源工作流自动化平台，支持可视化构建和自定义代码，可自托管或云部署，集成超 400 个应用。*   **koreader / koreader**: 这是一款支持多种格式、专为电子墨水屏设备优化的电子书阅读器应用，功能丰富且可在多种设备上运行。*   **huggingface / agents-course**: 这个仓库包含 Hugging Face 的 AI Agent 课程材料，教授如何使用大型语言模型构建智能代理，涵盖多种框架和技术。*   **jj-vcs / jj**: jj 是一个新型的、与 Git 兼容的版本控制系统，设计强调简单和强大，具有“工作副本即提交”和操作日志撤销等创新特性。*   **CapSoftware / Cap**: Cap 是一个开源的 Loom 替代品，提供美观、易分享的屏幕录制功能，支持 macOS 和 Windows，并正在开发自托管方案。*   **expo / expo**: Expo 是一个基于 React 的开源框架，帮助开发者通过单一代码库轻松构建可在 Android、iOS 和 Web 上运行的跨平台原生应用。*   **microsoft / PowerToys**: PowerToys 是微软为 Windows 用户提供的一系列系统实用工具，旨在增强系统功能、提高生产力，包含窗口管理、快捷键定制等多种模块。'
+---
+
+## GoogleCloudPlatform / kubectl-ai
+
+AI驱动的Kubernetes助手
+
+**作者:** [GoogleCloudPlatform](https://github.com/GoogleCloudPlatform) | **仓库:** [Github 链接](https://github.com/GoogleCloudPlatform/kubectl-ai) | **语言:** Go
+
+### 项目简介
+
+kubectl-ai：AI 赋能的 Kubernetes 助手
+
+kubectl-ai 是一个由 Google Cloud Platform 开发的开源项目，旨在通过人工智能（AI）简化 Kubernetes 集群的管理和交互。它作为一个 kubectl 插件运行在终端中，允许用户使用自然语言查询和操作 Kubernetes 资源，而无需记忆复杂的 kubectl 命令。
+
+该工具具备以下核心功能：
+
+1.  **自然语言交互：** 用户可以直接用人类语言向 kubectl-ai 提问或下达指令，例如“显示 default 命名空间中的所有 Pod”或“将 nginx app 的容量翻倍”。Kubectl-ai 会解析这些自然语言输入，并将其转化为相应的 kubectl 命令执行。
+2.  **支持多种 AI 模型：** kubectl-ai 不仅支持 Google 的 Gemini 系列模型（包括 Gemini Pro 和 Gemini Flash），还兼容本地运行的 AI 模型（如 Ollama 和 llama.cpp），以及 Azure OpenAI 和 OpenAI 的模型。用户可以通过命令行参数或环境变量指定使用的 AI 提供商和模型。
+3.  **交互式模式和命令行模式：** 用户可以选择进入交互式会话模式，进行多轮问答并保持上下文，也可以直接将查询作为命令行参数输入，方便与 Unix 其他命令链式调用。
+4.  **特定操作关键词：** 提供了一些特殊关键词，如 `model`, `models`, `version`, `reset`, `clear`, `exit` 或 `quit`，用于查询模型信息、管理会话上下文或退出程序。
+
+kubectl-ai 项目还包含了一个名为 `k8s-bench` 的基准测试工具，用于评估不同大型语言模型在处理 Kubernetes 相关任务时的性能。
+
+总而言之，kubectl-ai 提供了一个更加直观和用户友好的方式来管理 Kubernetes 集群，通过 AI 的能力，降低了操作的门槛，提高了工作效率。
+
+---
+
+## LadybirdBrowser / ladybird
+
+真正独立的网络浏览器
+
+**作者:** [LadybirdBrowser](https://github.com/LadybirdBrowser) | **仓库:** [Github 链接](https://github.com/LadybirdBrowser/ladybird) | **语言:** C++
+
+### 项目简介
+
+Ladybird：一个完全独立的网页浏览器
+
+Ladybird 是一个致力于构建“真正独立”网页浏览器的开源项目，其核心在于采用一套基于Web标准的新颖引擎，而非依赖现有的主流浏览器引擎（如 Chromium 或 Firefox）。项目目前处于“预-Alpha”阶段，主要面向开发者使用，尚未完全成熟。
+
+项目的目标是构建一个功能齐全、面向现代网络的可用浏览器。为此，Ladybird 采用了多进程架构，包括主UI进程、多个WebContent（渲染引擎）进程、图像解码进程和请求服务器进程。通过将图像解码和网络连接等任务放在独立的进程中处理，可以增强浏览器抵御恶意内容的健壮性，同时每个标签页拥有独立的渲染进程，并通过沙盒机制与系统其他部分隔离。
+
+Ladybird 继承了 SerenityOS 项目中的许多核心库组件，例如 LibWeb（Web渲染引擎）、LibJS（JavaScript引擎）、LibWasm（WebAssembly实现）、LibCrypto/LibTLS（密码学和传输层安全）、LibHTTP（HTTP/1.1客户端）、LibGfx（2D图形、图像解码和渲染）、LibUnicode（Unicode和区域设置支持）、LibMedia（音频和视频播放）、LibCore（事件循环、操作系统抽象层）和 LibIPC（进程间通信）。这些基础库共同构成了 Ladybird 独立引擎的关键。
+
+项目文档详细介绍了如何在 Linux、macOS、Windows (通过 WSL2) 以及其他类 Unix 系统上构建和运行 Ladybird。贡献者指南和问题报告政策也清晰说明了参与项目的方式以及如何有效地提交问题。
+
+Ladybird 项目遵循 2-Clause BSD 许可证。项目积极欢迎社区参与讨论和贡献，并提供了 Discord 社区服务器作为交流平台。截至目前，项目获得了可观的社区关注，拥有超过 3.9万颗星和 1.7千个 Fork，吸引了超过 1100 名贡献者，主要开发语言为 C++、HTML 和 JavaScript。
+
+---
+
+## 521xueweihan / HelloGitHub
+
+分享 GitHub 上有趣、入门级的开源项目
+
+**作者:** [521xueweihan](https://github.com/521xueweihan) | **仓库:** [Github 链接](https://github.com/521xueweihan/HelloGitHub) | **语言:** Python
+
+### 项目简介
+
+HelloGitHub 项目摘要
+
+这份内容来自 GitHub 上的一个名为 "HelloGitHub" 的开源项目，其核心目标是分享 GitHub 上有趣且入门级的开源项目，旨在帮助初学者和感兴趣的人快速找到开源世界的乐趣。
+
+项目以月刊的形式运营，通常在每月的 28 号发布新一期内容。月刊涵盖多个类别，包括有趣的项目、开源书籍、实战项目以及企业级项目等，力求通过精选内容，让读者能在短时间内感受到开源的魅力。项目提供了中文、英文和日文三种语言的 README 文件，方便不同语言的用户查阅。
+
+HelloGitHub 鼓励用户推荐或自荐项目，并欢迎贡献者参与项目内容的维护和拓展。项目在 GitHub 上拥有大量星标 (Stars) 和分叉 (Forks)，显示了其广泛的影响力和受欢迎程度。此外，项目页面还列出了其主要贡献者。
+
+总的来说，HelloGitHub 是一个精选优质开源项目的平台，特别关注入门级和有趣的项目，通过定期发布月刊，为想要了解或参与开源的人提供了一个便捷且引人入胜的入口。
+
+---
+
+## awslabs / agent-squad
+
+灵活强大的多AI代理管理和复杂对话处理框架
+
+**作者:** [awslabs](https://github.com/awslabs) | **仓库:** [Github 链接](https://github.com/awslabs/agent-squad) | **语言:** Python
+
+### 项目简介
+
+Agent Squad：面向复杂对话的多 AI 代理管理框架
+
+Agent Squad（前身为 Multi-Agent Orchestrator）是一个灵活、轻量级的开源框架，旨在简化多个 AI 代理的管理和复杂对话的处理。其核心功能在于智能地将用户查询路由到最合适的代理，并在代理之间维护会话上下文。
+
+该框架提供现成的组件，可快速部署，同时也支持轻松集成自定义代理和对话消息存储方案。这种可定制性使其广泛适用于各种应用场景，从简单的聊天机器人到复杂的 AI 系统，能够满足各种需求并高效扩展。
+
+Agent Squad 的关键特性包括：
+
+- 智能意图分类：基于上下文和内容将查询动态路由到最适合的代理。
+- 双语言支持：提供 Python 和 TypeScript 两种版本实现。
+- 灵活的代理响应：支持流式和非流式响应。
+- 上下文管理：维护跨代理的会话上下文，确保交互连贯。
+- 可扩展架构：易于集成新代理或定制现有代理。
+- 通用部署：可在 AWS Lambda、本地环境或任何云平台运行。
+- 预构建代理和分类器：提供多种即用型代理和分类器。
+
+特别值得一提的是，框架引入了 SupervisorAgent，支持代理之间的复杂团队协作。通过“代理即工具”的架构，主代理可以协调一组并行工作的专业代理，从而处理更复杂的任务。
+
+文档中提供了多种示例和快速入门指南，包括展示旅行代理、天气代理、餐厅代理、数学代理、技术代理和健康代理如何无缝切换和处理复杂对话的演示应用。此外，还提供了丰富的深度探讨资源，如博客文章和播客，分享了 Agent Squad 在构建多语言聊天机器人、AI 驱动的电子商务客户支持系统、AI 呼叫中心等方面的实践经验。
+
+项目遵循 Issue-First 政策进行贡献，所有拉取请求必须与现有问题相关联。Agent Squad 采用模块化设计，用户可根据需要选择安装特定组件（如 AWS、Anthropic、OpenAI 集成或完整安装）。项目在 GitHub 上是开源的，欢迎社区贡献和讨论，并根据 Apache 2.0 许可证发布。
+
+---
+
+## unionlabs / union
+
+为审查抵抗、极高安全性和去中心化金融应用而设计的信任最小化、零知识跨链协议
+
+**作者:** [unionlabs](https://github.com/unionlabs) | **仓库:** [Github 链接](https://github.com/unionlabs/union) | **语言:** Rust
+
+### 项目简介
+
+Union：信任最小化、零知识的跨链协议
+
+Union 是一个信任最小化、基于零知识证明的跨链桥接协议，专为抗审查、极高安全性以及在去中心化金融（DeFi）中的应用而设计。其核心理念是“共识验证”，完全不依赖于第三方的信任机制、预言机、多重签名或MPC。 Union 实现了 IBC 协议以兼容 Cosmos 生态链，同时也能连接以太坊、Berachain、Arbitrum 等 EVM 兼容链。
+
+该协议的关键特性在于其去中心化的治理结构，能够通过去中心化治理控制合约升级、跨链连接、代币配置以及协议的演进方向，确保项目开发的方向与用户、验证者和运营者保持一致。
+
+Union 项目由多个核心组件构成，包括使用 Go 语言编写的 Union 节点实现 (`uniond`) 和零知识证明生成器 (`galoisd`)、使用 Rust 语言开发的跨生态中继器 (`voyager`)、多生态消息索引器 (`hubble`)、 Cosmos 生态的 CosmWasm 智能合约栈 (`cosmwasm`)、针对不同链的光客户端 (`light-clients`)，以及用于生产环境的节点监督器 (`unionvisor`)。此外，项目还包含用于 Cosmos 测试链的水龙头 (`drip`)、EVM 链的 Solidity 智能合约栈 (`evm`)、基于 TypeScript 和 Svelte 的前端应用 (`app`) 和网站 (`site`)，以及用于与 Union 交互的 TypeScript SDK。
+
+项目提供了便捷的快速启动指南，推荐使用 Nix 工具进行可复现的构建，并提供包含所有开发依赖的开发环境。
+
+Union 协议通过零知识证明和去中心化架构，致力于解决传统跨链桥在安全性、信任依赖和审查抵抗方面的挑战，为 DeFi 领域提供一个更安全可靠的跨链基础设施。
+
+---
+
+## hacksider / Deep-Live-Cam
+
+实时换脸和单张图片一键生成视频Deepfake
+
+**作者:** [hacksider](https://github.com/hacksider) | **仓库:** [Github 链接](https://github.com/hacksider/Deep-Live-Cam) | **语言:** Python
+
+### 项目简介
+
+Deep-Live-Cam：实时换脸与一键视频深度伪造
+
+Deep-Live-Cam 是一个开源项目，专注于实现实时换脸和基于单张图像的一键视频深度伪造功能。该项目支持多种用途，包括协助 AI 生成媒体行业的艺术家创作动漫角色、引人入胜的内容，甚至用于服装设计模型。
+
+项目开发者强调了负责任和道德地使用该软件的重要性。软件内置有内容检查，可以防止处理不当媒体（如裸体、色情内容、敏感材料等）。开发者承诺在法律和道德框架内持续开发，并表示如果法律要求，可能会关闭项目或添加水印。用户被要求在分享在线输出时，如使用真实人物的脸，必须获得同意并明确标记为深度伪造。
+
+Hacksider 提供了 Windows 平台的预构建版本（Quick Start），推荐给非技术用户或不想手动安装依赖的用户，此版本在开源版本基础上会有大约 60 天的更新优势。对于更技术性的用户，也提供了详细的手动安装指南，支持 Windows、Linux 和 macOS 平台，并针对不同的硬件（NVIDIA CUDA、Apple Silicon/Legacy CoreML、Intel OpenVINO™ 和 Windows DirectML）提供了 GPU 加速的安装配置。
+
+核心功能包括：
+
+- **嘴部遮罩（Mouth Mask）**：保留原始嘴部动作以实现更准确的表情。
+- **人脸映射（Face Mapping）**：在多个主体上同时使用不同的目标人脸。
+- **电影换脸**：实时观看带有任意人脸的电影。
+- **直播表演**：用于进行实时直播和表演。
+- **模因创作**：创建更容易传播的模因。
+- **与 Omegle 互动**：在 Omegle 上实时进行换脸互动。
+
+软件支持图像/视频模式和网络摄像头模式两种使用方式。图像/视频模式下，用户选择源脸部图像和目标图像/视频进行处理并保存输出；网络摄像头模式下，选择源脸部图像后点击“直播”，通过屏幕捕获工具进行直播。
+
+该项目在技术实现上依赖于 ffmpeg 进行视频操作，并使用了 insightface 项目提供的库和模型（需注意 insightface 模型的使用限制为非商业研究目的）。项目获得了社区的广泛关注，并在多家媒体中被报道，既肯定了其技术能力，也引发了对潜在滥用和身份盗窃的担忧。
+
+---
+
+## glanceapp / glance
+
+整合所有 Feed 的自Host仪表盘
+
+**作者:** [glanceapp](https://github.com/glanceapp) | **仓库:** [Github 链接](https://github.com/glanceapp/glance) | **语言:** Go
+
+### 项目简介
+
+项目 Glance 是一款自托管的个性化仪表盘工具，旨在将用户的各种信息源集成到一个统一的界面中。其核心功能在于提供各种可定制的组件（Widgets），例如 RSS 订阅、Reddit 帖子、Hacker News 内容、天气预报、YouTube 频道更新、Twitch 频道状态、市场价格、Docker 容器状态以及服务器统计信息等，用户可以根据需求自由添加和配置。
+
+Glance 的主要特点包括其快速和轻量化的设计，占用内存低，依赖少，并且提供小型二进制文件和 Docker 容器，方便在多种操作系统和架构上部署。加载速度快，通常在 1 秒内完成（取决于网络和组件数量）。此外，Glance 高度可定制化，支持多种布局和页面，每个组件都有丰富的配置选项，并允许用户自定义 CSS 和主题。它也针对移动设备进行了优化。
+
+该项目通过 YAML 文件进行配置，用户可以方便地创建和管理不同页面和组件。提供了详细的配置文档和示例。安装方式多样，推荐使用 Docker Compose，也支持手动二进制安装，并列出了第三方安装渠道。README 中还包含常见的安装和布局问题以及相应的解决方案。
+
+Glance 作为一个开源项目，遵循 AGPL-3.0 许可，鼓励社区贡献。开发者可以按照指导进行代码构建和贡献，项目同时也接受新功能的建议，并对其进行分类管理。整个项目强调自托管和聚合信息的能力，为用户提供一个集中查看各种重要信息的便捷平台。
+
+---
+
+## containerd / containerd
+
+开放可靠的容器运行时
+
+**作者:** [containerd](https://github.com/containerd) | **仓库:** [Github 链接](https://github.com/containerd/containerd) | **语言:** Go
+
+### 项目简介
+
+Containerd 是一个开放且可靠的容器运行时，旨在成为更大系统的嵌入式组件，而非直接由开发者和最终用户使用。它作为一个守护进程运行在 Linux 和 Windows 系统上，负责管理完整的容器生命周期，包括镜像传输和存储、容器执行与监控、底层存储和网络连接等。
+
+Containerd 是 CNCF 的一个毕业项目，具有较高的行业地位和成熟度。该项目强调简单性、健壮性和可移植性，并可与 runc 等 OS 特定库配合使用。
+
+项目目前正在积极招募各类贡献者，包括文档编写、社区组织、安全顾问以及代码开发等。对于新手贡献者，项目提供了带有 `exp/beginner` 标签的入门级议题。
+
+Containerd 2.0 版本已经发布，并提供了针对操作员、管理员、命名空间和客户端选项等主题的详细文档。开发者可以通过查阅 CONTRIBUTING 文档来了解如何贡献代码。项目还提供 Nightly 构建版本，但需注意其可能包含关键 bug，不推荐用于生产环境。
+
+作为 Kubernetes 的容器运行时接口 (CRI) 实现，`cri` 插件自 containerd 1.1 版本起已内置并默认启用，并已达到 GA 状态。它通过了所有 CRI 验证测试、节点 e2e 测试和 e2e 测试，证明了其在 Kubernetes 环境中的稳定性和兼容性。用户可以使用 `cri-tools`（特别是 `critest` 命令）来验证 CRI 设置。此外，项目还提供了详细的 CRI 指南，涵盖安装、测试、调试和配置等方面。
+
+社区沟通方面，项目鼓励通过 GitHub 上的 issues 和 pull requests 进行异步讨论，并通过 CNCF Slack 上的 `#containerd` 和 `#containerd-dev` 频道进行同步交流。项目定期举办社区会议，日程可在 CNCF 日历上查询。
+
+Containerd 代码库采用 Apache 2.0 许可证，文档和 README 文件采用 Creative Commons Attribution 4.0 International License。
+
+项目的治理、维护者和贡献指南等核心文档集中在 `containerd/project` 仓库中。项目欢迎用户在其 ADOPTERS.md 文件中公布使用 containerd 的信息。
+
+总结而言，Containerd 是一个功能强大、成熟且活跃发展的容器运行时，广泛应用于容器生态系统中，并持续通过社区协作进行改进和维护。
+
+---
+
+## n8n-io / n8n
+
+具备原生 AI 能力的 Fair-code 工作流自动化平台。融合可视化构建与自定义代码，支持自托管或云端部署，集成 400+ 应用。
+
+**作者:** [n8n-io](https://github.com/n8n-io) | **仓库:** [Github 链接](https://github.com/n8n-io/n8n) | **语言:** TypeScript
+
+### 项目简介
+
+n8n 是一个专为技术团队设计的公平代码（Fair-code）工作流程自动化平台。它集成了原生 AI 能力，允许用户通过可视化界面构建工作流程，同时提供自定义代码的灵活性，支持 JavaScript/Python 并可添加 npm 包。n8n 拥有超过 400 种集成，可以连接各种应用和服务。用户可以选择自行托管（Self-host）或者使用 n8n 的云服务，从而拥有完整的**数据控制权**和**部署灵活性**。平台具备强大的**企业级功能**，包括高级权限管理、SSO 单点登录和离线部署。此外，n8n 还有一个活跃的社区，提供 900 多个现成的**工作流程模板**，以及丰富的**文档**、**集成列表**和**社区论坛**获取支持。平台支持快速启动，可以通过 npx 命令或 Docker 容器轻松部署。n8n 的名称来源于“nodemation”，意为节点自动化，发音为 n-eight-n。
+
+---
+
+## koreader / koreader
+
+一款支持 PDF、DjVu、EPUB、FB2 等多种格式的电子书阅读器应用，可在 Cervantes、Kindle、Kobo、PocketBook 和 Android 设备上运行
+
+**作者:** [koreader](https://github.com/koreader) | **仓库:** [Github 链接](https://github.com/koreader/koreader) | **语言:** Lua
+
+### 项目简介
+
+KOReader：专注于电子墨水屏的多功能电子书阅读器
+
+KOReader是一款专为电子墨水屏设备设计的电子书阅读应用程序。它具有出色的便携性，可以在Cervantes、Kindle、Kobo、PocketBook、reMarkable等多种电子阅读器以及安卓和Linux桌面系统上运行。对于开发者，还可以在Linux和MacOS上使用KOReader模拟器。
+
+该应用支持多种文档格式，包括PDF, DjVu, EPUB, FB2, Mobi, DOC, RTF, HTML, CHM, TXT等固定排版和可重排格式，甚至支持ZIP内的部分格式。对于扫描的PDF和DjVu文档，KOReader内置了K2pdfopt库，可以实现内容重排，提升阅读体验。
+
+KOReader提供全方位的阅读功能，用户界面支持多种语言，阅读视图高度可定制，并提供丰富的排版选项。用户可以自由设置页边距、行距，并选择外部字体和样式。应用内捆绑了多语言的连字符字典。
+
+此外，KOReader还集成了多种服务，如与Calibre集成（支持搜索元数据、无线传输电子书、浏览OPDS书库）、Wallabag、Wikipedia、Google Translate等。针对电子墨水屏设备，界面经过优化，去除动画，菜单分页显示，文本对比度可调，方便地缩放以适应内容或页面。
+
+KOReader具有良好的可扩展性，支持插件功能，并且在一些老旧设备上表现出色，翻页速度测量显示比内置阅读软件快一倍以上。它还包含词典查询（支持StarDict和Wikipedia）、在线OPDS书库和RSS订阅、无线软件更新、FTP客户端和SSH服务器等众多实用功能。用户可以通过LiberaPay支持该项目的发展。
+
+更多详细信息和使用指南可以在KOReader官方网站和维基页面找到。项目的开发活跃，有众多贡献者参与其中。
+
+---
+
+## huggingface / agents-course
+
+本仓库包含 Hugging Face Agents 课程
+
+**作者:** [huggingface](https://github.com/huggingface) | **仓库:** [Github 链接](https://github.com/huggingface/agents-course) | **语言:** Jupyter Notebook
+
+### 项目简介
+
+Hugging Face Agent 课程概述
+
+Hugging Face Agent 课程是一个旨在教授用户如何构建和使用基于大型语言模型（LLMs）的智能代理的在线课程。该课程的内容托管在一个公开的 GitHub 仓库中，该仓库包含了课程的所有材料、代码示例和相关资源。
+
+课程共分为4个单元，从代理的基础知识讲起，逐步深入，最终引导学生完成一个带有基准测试的最终项目。课程内容涵盖了代理的定义、LLMs 的家庭树、特殊 Token，并探讨了用于构建 AI 代理的各种框架，包括 `smolagents`、`LangGraph` 和 `LlamaIndex`。此外，课程还提供了关于如何微调 LLM 以实现函数调用、如何追踪和评估代理，以及如何在 Agentic RAG (检索增强生成) 场景下应用所学知识的额外单元。
+
+课程的参与者需要具备基本的 Python 知识和对 LLMs 的基础了解。该 GitHub 仓库不仅是课程内容的载体，也是社区交流和贡献的平台。鼓励用户通过提交拉取请求来修正错别字、语法错误，或在创建 issue 并讨论后贡献新的课程单元。
+
+该项目遵循 Apache-2.0 许可证。仓库中包含了课程的 Notebook、测验、脚本以及单元材料等文件夹。该仓库拥有超过 1.7 万的 Star 和 1.2 千的 Fork，表明了社区对该课程的广泛关注和参与。贡献者列表显示了积极参与项目开发的多个成员。
+
+总而言之，这个 GitHub 仓库为 Hugging Face Agent 课程提供了一个开放、协作的环境，方便用户学习、实践和贡献 AI 代理相关的知识和技能。
+
+---
+
+## jj-vcs / jj
+
+一个既简单又强大的 Git 兼容版本控制系统
+
+**作者:** [jj-vcs](https://github.com/jj-vcs) | **仓库:** [Github 链接](https://github.com/jj-vcs/jj) | **语言:** Rust
+
+### 项目简介
+
+jj：一个简单而强大的Git兼容版本控制系统
+
+本文主要介绍了jj，一个新型的版本控制系统（VCS），它在设计上力求简洁性和强大功能，同时保持与Git的兼容性。jj的核心理念是将用户界面、版本控制算法与底层存储系统分离开来，使得其能够支持多种物理后端，目前已投入使用的是基于Git仓库的存储后端。这使得jj可以轻松与现有的Git工具链（如GitHub等）集成使用。
+
+jj借鉴了多种现有VCS的特性，包括Git的速度和互操作性，Mercurial和Sapling的无显式索引、匿名分支、强大的历史重写能力以及可配置的输出模板，以及Darcs将冲突作为一流对象处理的设计，从而实现自动化的冲突解决和传播。
+
+除了融合其他VCS的优点，jj还引入了几项创新特性。最显著的是“工作副本即提交”（Working-copy-as-a-commit）模式，工作目录的更改会自动记录为正常的提交，并在后续更改时自动修改，这简化了用户模型，消除了Git的暂存区和stash概念。另一个重要特性是操作日志和撤销功能，jj会记录所有仓库操作，方便用户追溯历史和轻松撤销错误。此外，jj还具备自动重写（rebase）和冲突解决能力，修改父提交后，子提交会自动rebase，冲突解决方案也会自动传播。
+
+尽管jj是一个相对年轻的项目，仍在积极开发中，并可能在正式版发布前进行一些工作流程和文件格式的调整，但核心开发团队已将其作为主要的日常开发工具。项目欢迎外部贡献，并提供了详细的入门指南、FAQ、术语表以及与其他VCS（特别是Git）的对比文档。值得一提的是，jj在设计上注重并发安全性，理论上即使在分布式文件系统或并发备份场景下使用也不易导致仓库损坏。
+
+总而言之，jj是一个致力于提供更好用户体验的新型VCS，通过借鉴和创新，它在保持Git兼容性的同时，提供了更直观的工作流程和强大的功能。
+
+---
+
+## CapSoftware / Cap
+
+开源的Loom替代品。美观、可分享的屏幕录像。
+
+**作者:** [CapSoftware](https://github.com/CapSoftware) | **仓库:** [Github 链接](https://github.com/CapSoftware/Cap) | **语言:** TypeScript
+
+### 项目简介
+
+Cap：开源的 Loom 替代品，提供美观、易于分享的屏幕录制功能。
+
+这份内容主要介绍了一个名为 Cap 的开源项目，它被定位为 Loom 的开源替代品。Cap 的核心功能是提供用于屏幕录制的视频消息工具，旨在实现快速录制、编辑和分享视频。
+
+项目在 GitHub 上开源，并提供了 macOS 和 Windows 平台的下载。
+
+项目的架构采用了 Monorepo 模式，并使用了多种技术栈，包括 Rust、React (Next.js)、TypeScript、Tauri、Drizzle (ORM)、MySQL 和 TailwindCSS。具体的应用组成包括一个基于 Tauri (Rust) 和 SolidStart 的桌面应用 (`desktop`) 以及一个基于 Next.js 的 Web 应用 (`web`)。此外，项目中还包含多个功能包 (`packages`)，用于共享代码和配置，例如 UI 组件库 (`ui`)、工具库 (`utils`)、tsconfig 配置 (`tsconfig`)、数据库库 (`database`) 和 eslint 配置 (`config`)。
+
+内容还提及了正在开发的 Cap 自托管方案，该方案将提供 Vercel、Render 的一键部署以及 Docker 自托管选项。并鼓励感兴趣的用户加入 Discord 社区贡献力量。
+
+从项目活动可以看出，该项目持续进行迭代和改进，最近的提交涉及团队成员对话框调整、定价页面更新、修复构建问题、更新设计指南以及 Docker 构建等。项目目前拥有 8.8k Star 和 486 Fork，活跃贡献者也较多。
+
+Cap 基于 AGPL-3.0 许可证发布。
+
+---
+
+## expo / expo
+
+一个用于使用 React 制作通用原生应用的开源框架。Expo 可在 Android、iOS 和 Web 上运行。
+
+**作者:** [expo](https://github.com/expo) | **仓库:** [Github 链接](https://github.com/expo/expo) | **语言:** TypeScript
+
+### 项目简介
+
+Expo是一个基于React的开源框架，用于构建可在Android、iOS和Web平台运行的跨平台原生应用。它提供了一套统一的运行时环境和库，让开发者可以使用React和JavaScript编写代码来创建原生体验的应用。
+
+Expo的核心优势在于其通用性，允许开发者通过单一代码库构建应用，并在不同平台上发布。该项目仓库包含了Expo SDK、模块API、Expo Go（一个用于快速预览和测试应用的客户端）、命令行工具（CLI）、路由库Router、官方文档以及各种辅助工具。同时，Expo也与Expo Application Services (EAS) 平台深度集成，EAS提供托管服务，帮助开发者进行应用的构建、分发和迭代管理。
+
+项目结构清晰，`packages` 目录存放了Expo模块的源代码，方便开发者查阅或修改；`apps` 目录包含与开发模块链接的Expo项目，尤其 `apps/expo-go` 子目录是Expo Go客户端的源代码所在；`docs` 目录下是官方文档的源码；`templates` 目录下是创建新Expo项目时使用的模板；`react-native-lab` 是Expo使用的React Native分支；此外还有用于指南、构建工具和模板文件的目录。
+
+Expo社区活跃，拥有大量星标和分支，并有超过1500名贡献者参与其中。项目采用MIT开源许可协议，其文档、社区支持（如Discord和论坛）以及贡献指南都为开发者提供了丰富的资源。项目文件提交记录也反映了持续的维护和更新，包括升级React Native版本、修复 bug 等。
+
+---
+
+## microsoft / PowerToys
+
+最大化生产力的 Windows 系统实用工具
+
+**作者:** [microsoft](https://github.com/microsoft) | **仓库:** [Github 链接](https://github.com/microsoft/PowerToys) | **语言:** C#
+
+### 项目简介
+
+PowerToys：提升Windows效率的系统实用工具集
+
+PowerToys 是微软为 Windows 用户打造的一系列系统实用工具，旨在通过优化和简化操作，帮助用户最大化生产力。这些工具是为高级用户设计，允许他们定制和调整 Windows 体验。
+
+项目提供了丰富的功能模块，包括但不限于：
+
+- **高级粘贴 (Advanced Paste)** 和 **粘贴为纯文本 (Paste as Plain Text)**：提供更灵活的粘贴选项。
+- **置顶 (Always on Top)**：使窗口保持在其他窗口之上。
+- **保持唤醒 (PowerToys Awake)**：防止计算机进入睡眠状态。
+- **颜色选择器 (Color Picker)**：用于在屏幕上拾取颜色信息。
+- **命令未找到 (Command Not Found)**：在命令shell中提供缺失命令的下载建议。
+- **命令面板 (Command Palette)**（新模块）：作为 PowerToys Run 的演进，以可扩展性为核心，提供更强大的快速启动和搜索功能，可以通过 Win+Alt+Space 快捷键激活，支持搜索应用、Shell 命令、文件以及通过 winget 安装软件包等。
+- **裁剪和锁定 (Crop And Lock)**：裁剪并置顶应用程序窗口的一部分。
+- **环境变量 (Environment Variables)** 和 **Hosts 文件编辑器 (Hosts File Editor)**：方便地管理系统配置。
+- **FancyZones**：强大的窗口布局管理器。
+- **文件管理器加载项 (File Explorer Add-ons)** 和 **文件解锁器 (File Locksmith)**：增强文件管理功能。
+- **图片缩放器 (Image Resizer)**：快速调整图片大小。
+- **键盘管理器 (Keyboard Manager)**：重新映射按键和快捷键。
+- **鼠标实用工具 (Mouse utilities)** 和 **无界鼠标 (Mouse Without Borders)**：改进鼠标使用体验和跨多设备控制。
+- **新建+ (New+)**：在文件创建时支持模板文件名变量。
+- **Peek**：快速预览文件，并新增了直接删除文件功能。
+- **PowerRename**：批量文件名重命名工具。
+- **PowerToys Run**：一个快速启动器，已被 Command Palette 逐渐取代，但仍包含多种插件。
+- **快速重音符号 (Quick Accent)**：方便输入特殊字符。
+- **注册表预览 (Registry Preview)**：可视化查看注册表内容。
+- **屏幕尺 (Screen Ruler)**：测量屏幕像素。
+- **快捷方式指南 (Shortcut Guide)**：显示当前窗口的可用快捷键。
+- **文本提取器 (Text Extractor)**：从屏幕上提取文本。
+- **工作区 (Workspaces)**：管理和保存应用程序窗口布局。
+- **ZoomIt**：用于缩放、绘制和录制屏幕内容。
+
+PowerToys 支持多种安装方式，推荐通过 GitHub 发行版下载可执行文件，同时也支持 Microsoft Store 和 WinGet 安装。项目欢迎社区贡献，包括代码、文档、设计和错误报告。未来的版本计划包括新增 File Actions Menu 模块、UI 自动化测试改进、安装程序升级以及键盘管理器编辑器界面的更新等。项目遵循 Microsoft 开源行为准则，并收集基础诊断数据以改进服务。
