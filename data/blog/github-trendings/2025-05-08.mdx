@@ -1,0 +1,347 @@
+---
+title: Github Daily Trending
+date: 2025-05-08
+cover: https://hub-image.moreve.net/files/images/github-trending/2025-05-08.png
+tags: [AI前沿, 开发工具, 科技动态, 深度分析]
+summary: '以下是内容的中文简介列表：1. GoogleCloudPlatform / kubectl-ai: 这是一个AI驱动的Kubernetes命令行助手，通过自然语言简化集群管理，支持多种大型语言模型，提高K8s交互效率。2. LadybirdBrowser / ladybird: 一个早期阶段的独立开源网页浏览器项目，采用全新的自研渲染引擎，目标是构建全功能、安全的现代浏览器。3. microsoft / ai-agents-for-beginners: 微软出品的AI Agent入门课程，通过10节课教授构建AI Agent的基础知识和使用各种框架，提供多语言支持和实践代码。4. ruanyf / weekly: 阮一峰的科技爱好者周刊，每周精选分享科技文章、软件和资源，涵盖AI、互联网、编程、就业等话题，并提供招聘信息。5. n8n-io / n8n: 一个fair-code工作流自动化平台，结合可视化和代码，内置AI能力，支持自托管和云部署，集成400+应用。6. crewAIInc / crewAI: 一个用于编排角色扮演AI代理的Python框架，通过协作智能解决复杂任务，提供 Crews 和 Flows 模式组合，支持深度定制。7. voideditor / void: 开源的Cursor代码编辑器替代品，基于VS Code并融入AI辅助编程功能，旨在提供一个开发者友好的编程环境。8. yuaotian / go-cursor-help: 解决Cursor编辑器免费试用限制的工具，通过修改本地配置文件和系统标识符，支持Windows、macOS和Linux。9. beekeeper-studio / beekeeper-studio: 一个现代易用的跨平台SQL客户端和数据库管理器，支持多种数据库类型，提供直观的UI和常用SQL功能。10. JetBrains / compose-multiplatform: JetBrains开发的基于Kotlin的多平台UI框架，利用Jetpack Compose构建高性能、美观的Android、iOS、桌面和Web应用。11. harry0703 / MoneyPrinterTurbo: 利用AI大模型一键生成高清短视频的工具，自动完成文案、素材、字幕、音乐等，支持多种模型和尺寸。12. linera-io / linera-protocol: Linera项目的主体仓库，构建高度可扩展、低延迟的Web3应用去中心化区块链基础设施，核心开发语言为Rust。13. huggingface / agents-course: Hugging Face提供的AI Agent在线课程资源库，教授构建和使用AI Agent的知识，涵盖常用框架和实践项目。14. cline / cline: 集成于IDE的自主编码代理，通过AI辅助完成文件编辑、命令执行、网页浏览等开发任务，强调用户授权和控制。'
+---
+
+## GoogleCloudPlatform / kubectl-ai
+
+AI 加持的 Kubernetes 助手
+
+**作者:** [GoogleCloudPlatform](https://github.com/GoogleCloudPlatform) | **仓库:** [Github 链接](https://github.com/GoogleCloudPlatform/kubectl-ai) | **语言:** Go
+
+### 项目简介
+
+kubectl-ai：AI 驱动的 Kubernetes 助手
+
+kubectl-ai 是一个集人工智能能力于一身的 Kubernetes 命令行助手，旨在简化 Kubernetes 集群的管理和操作。它通过自然语言的方式与用户交互，将复杂的 Kubernetes 命令转换为用户友好的查询。
+
+该项目支持多种大型语言模型（LLM）提供商，包括 Google 的 Gemini、Vertex AI，微软的 Azure OpenAI，OpenAI 本身的模型，以及像 X.AI 的 Grok。此外，它还支持使用本地运行的 LLM 模型，如 ollama 和 llama.cpp。用户可以通过设置相应的 API 密钥或指定提供商和模型来选择使用的 AI 模型。
+
+kubectl-ai 提供了灵活的使用方式。用户可以进入交互模式，通过对话的方式进行多轮查询，系统会保持上下文信息。用户也可以直接将查询作为输入参数，或通过管道（pipe）与其他 Unix 命令结合使用，甚至可以将错误日志或其他内容输入，让 AI 进行解释。例如，用户可以使用自然语言询问 Pod 的状态、创建部署、或增加应用容量等任务。
+
+项目还包含一个名为 k8s-bench 的基准测试工具，用于评估不同 LLM 模型在处理 Kubernetes 相关任务时的表现。最新的基准测试结果显示，gemini-2.5 系列模型在成功率方面表现优秀。
+
+总而言之，kubectl-ai 利用 AI 的力量，极大地降低了与 Kubernetes 集群交互的门槛，为开发者和运维人员提供了一个更直观、更高效的管理工具。
+
+---
+
+## LadybirdBrowser / ladybird
+
+真正独立的网页浏览器
+
+**作者:** [LadybirdBrowser](https://github.com/LadybirdBrowser) | **仓库:** [Github 链接](https://github.com/LadybirdBrowser/ladybird) | **语言:** C++
+
+### 项目简介
+
+Ladybird 浏览器项目简介
+
+Ladybird 是一个尚处于早期开发阶段（预 Alpha 状态）的独立网络浏览器。其核心亮点在于采用一套全新的、基于 Web 标准的渲染引擎。项目目标是构建一个完整且功能齐全的浏览器，能够支持现代 Web 的需求。
+
+项目采用多进程架构设计，包含一个主 UI 进程、多个 WebContent 渲染进程、一个图像解码进程和一个请求服务器进程。这种设计将图像解码和网络连接等操作隔离到独立的进程中，以提高对恶意内容的健壮性。每个标签页拥有独立的渲染进程，并与其他系统部分进行沙盒隔离以增强安全性。
+
+Ladybird 项目大量复用自 SerenityOS 的核心库组件，例如：LibWeb（网页渲染）、LibJS（JavaScript 引擎）、LibWasm（WebAssembly 实现）、LibCrypto/LibTLS（加密与 TLS）、LibHTTP（HTTP/1.1 客户端）、LibGfx（2D 图形、图像解码和渲染）、LibUnicode（Unicode 和本地化支持）、LibMedia（音视频播放）以及 LibCore 和 LibIPC（事件循环、操作系统抽象和进程间通信）。
+
+该项目目前支持在 Linux、macOS、Windows (通过 WSL2) 以及其他多种类 Unix 系统上构建和运行。项目文档提供了详细的构建指南、代码相关文档和贡献指南。鼓励贡献者加入 Discord 开发社区进行讨论和参与贡献。
+
+Ladybird 项目基于 BSD 2-条款许可证发布，目前在 GitHub 上获得了超过 4 万颗星和 1.7 千个 Fork，拥有超过 1100 名贡献者，主要使用 C++、HTML 和 JavaScript 等语言开发。
+
+---
+
+## microsoft / ai-agents-for-beginners
+
+构建AI代理的10堂入门课
+
+**作者:** [microsoft](https://github.com/microsoft) | **仓库:** [Github 链接](https://github.com/microsoft/ai-agents-for-beginners) | **语言:** Jupyter Notebook
+
+### 项目简介
+
+微软出品的“AI Agents for Beginners”是一门入门课程，旨在通过10节课教授用户构建AI Agent所需的基础知识。该课程内容涵盖广泛，从AI Agent的介绍和用例，到探索不同的Agent框架，理解Agent设计模式（如工具使用、Agentic RAG、规划设计、多Agent和元认知），以及如何构建可信赖的AI Agent和将它们部署到生产环境。
+
+课程提供了丰富的学习资源，包括每节课的文字讲解、配套视频、以及用于实践的Python代码示例。这些代码示例支持使用Azure AI Foundry和GitHub Model Catalogs与语言模型交互，用户可以选择适合自己的平台进行学习。课程特别提到了Azure AI Agent Service、Semantic Kernel和AutoGen等微软相关的AI Agent框架和服务。
+
+该课程拥有完善的本地化支持，提供了包括简体中文、繁体中文、法语、日语、韩语、葡萄牙语、西班牙语、德语、波斯语、波兰语和印地语在内的多种语言翻译的README文件，方便全球用户学习。
+
+项目托管在GitHub上，遵循MIT许可证，欢迎社区贡献。用户可以通过提出问题或提交拉取请求来帮助改进课程内容。如果遇到困难，可以加入Azure AI社区Discord寻求帮助。该项目还提供了其他AI及开发相关的入门课程链接，展示了微软在普及技术教育方面的努力。
+
+---
+
+## ruanyf / weekly
+
+科技爱好者周刊
+
+**作者:** [ruanyf](https://github.com/ruanyf) | **仓库:** [Github 链接](https://github.com/ruanyf/weekly) | **语言:**
+
+### 项目简介
+
+## 科技爱好者周刊：聚焦科技动向，提供多维视角
+
+阮一峰的《科技爱好者周刊》是一个每周五发布的科技内容精选集。该周刊旨在记录和分享一周内值得关注的科技领域内容，涵盖文章、软件和资源推荐。
+
+周刊内容丰富，涉及人工智能、互联网发展、编程、就业、创业、社会议题、人生感悟等多个方面。从近期主题来看，周刊密切关注人工智能（如AI爬虫、AI面试、AI版权、AI模型）、互联网行业变化（如互联网创业难、网络社区悲剧、内容行业的衰落、互联网就业）、新技术发展（如6G、LiFi、数字人民币）以及一些更宏观或个人层面的思考（如生活的意义、时间利用、职业选择、人生规划）。
+
+为了方便读者浏览和查找历史内容，周刊提供了多种搜索方式，包括GitHub站内搜索、Sourcegraph搜索以及本地克隆仓库后使用命令行进行搜索。此外，周刊还专门设置了《谁在招人》讨论区，为一个免费的程序员招聘信息平台，为求职者提供大量就业机会。
+
+总的来说，《科技爱好者周刊》不仅是一个科技资讯集合，更是一个融合了技术趋势分析、行业观察、个人成长思考的综合性读物。它通过每周更新，为科技爱好者提供了一个了解前沿动态、拓宽视野、获取招聘信息以及进行深度阅读和思考的平台。
+
+---
+
+## n8n-io / n8n
+
+Fair-code 流程自动化平台，内置 AI 能力。结合可视化构建与自定义代码，可自托管或云部署，集成 400+ 应用。
+
+**作者:** [n8n-io](https://github.com/n8n-io) | **仓库:** [Github 链接](https://github.com/n8n-io/n8n) | **语言:** TypeScript
+
+### 项目简介
+
+n8n 项目概述
+
+n8n 是一个面向技术团队的公平代码（fair-code）工作流自动化平台，具备原生 AI 能力。其核心优势在于结合了可视化构建与自定义代码的能力，提供了极大的灵活性。该平台支持自托管或云端部署，并拥有超过 400 种集成服务，方便用户连接各种应用和数据源。
+
+n8n 的主要功能和特点包括：
+
+1.  **代码与可视化的结合**：用户既可以通过拖拉拽的可视化界面构建工作流，也可以在需要时编写 JavaScript/Python 代码，引入 npm 包，以处理更复杂的逻辑或集成需求。
+2.  **AI 原生平台**：内置 AI 能力，特别是支持基于 LangChain 构建 AI 代理工作流，用户可以使用自己的数据和模型来增强自动化能力。
+3.  **灵活的部署选项**：采用公平代码许可模式，允许用户完全掌控数据并选择自托管部署。同时也提供云服务供用户选择。
+4.  **企业级功能**：提供高级权限管理、单点登录（SSO）和气隙（air-gapped）部署等功能，满足企业级应用的需求。
+5.  **活跃的社区与丰富的资源**：拥有庞大的社区，贡献了 400 多个集成和 900 多个现成的模板，为用户提供了丰富的资源和支持。
+
+项目提供了快速入门方式，可以通过 npx 或 Docker 轻松安装和启动。文档、集成列表、示例工作流、AI & LangChain 指南以及社区论坛都是用户获取帮助和深入了解的重要资源。
+
+n8n 的名称由 “nodemation” 缩写而来，意为节点自动化，反映了其基于节点的可视化界面和自动化能力。该项目采用可持续使用许可和企业许可两种模式，保证了源代码的可见性和自托管能力，并允许扩展。同时，项目欢迎社区贡献者参与到 bug 修复和功能开发中。这是一个活跃且功能强大的工作流自动化解决方案。
+
+---
+
+## crewAIInc / crewAI
+
+用于编排角色扮演、自主人工智能代理的框架。通过促进协作智能，CrewAI 使代理能够无缝协作，解决复杂的任务。
+
+**作者:** [crewAIInc](https://github.com/crewAIInc) | **仓库:** [Github 链接](https://github.com/crewAIInc/crewAI) | **语言:** Python
+
+### 项目简介
+
+CrewAI是一个开源的Python框架，专门用于编排扮演不同角色的自主人工智能代理。它独立于其他代理框架（如LangChain），致力于提供快速、灵活且高度可控的多Agent自动化解决方案。
+
+CrewAI的核心理念是通过协作智能，让多个AI代理协同工作以应对复杂任务。它提供了两种主要方式来构建AI应用：
+
+1.  **Crews**：由具有真实自主性和代理能力的AI代理组成的团队，通过基于角色的协作来完成复杂的任务，强调自然、动态的决策和任务委派。
+2.  **Flows**：生产级的事件驱动工作流，提供对复杂自动化的精确控制，支持精细化的执行路径控制、安全的任务状态管理，以及与生产Python代码的无缝集成。
+
+CrewAI 的独特之处在于能够将 Crews（自主性）和 Flows（精确性）无缝结合，从而构建既能处理复杂现实场景又具备良好可控性和可维护性的应用程序。它提供深度的定制化能力，用户可以调整从高层工作流到低层内部提示和代理行为的各个方面。
+
+该框架易于安装和使用，提供了命令行界面（CLI）来快速创建项目结构，并通过 `agents.yaml` 和 `tasks.yaml` 文件配置代理和任务。用户可以将 Crew 连接到各种大型语言模型（LLMs），包括通过API连接的远程模型或使用Ollama等工具连接的本地模型。
+
+CrewAIEnterprise Suite为企业提供了更强大的解决方案，包括统一控制平面、实时可观测性、高级安全性、可操作洞察和全天候支持，并支持云端和本地部署。用户可以免费试用 Crew Control Plane。
+
+CrewAI拥有一个活跃的社区，提供了丰富的教育资源（包括课程和文档）以及实际的案例示例（如旅行规划、股票分析等），并欢迎社区贡献。
+
+---
+
+## voideditor / void
+
+**作者:** [voideditor](https://github.com/voideditor) | **仓库:** [Github 链接](https://github.com/voideditor/void) | **语言:** TypeScript
+
+### 项目简介
+
+Void 项目概览：开源的 Cursor 替代品
+
+Void 项目是开源的代码编辑器 Cursor 的替代品，其源代码托管在 GitHub 平台。该项目致力于提供一个面向开发者的编程环境。项目页面显示了其基于 Apache-2.0 许可证发布，并提及发现了未知许可证文件 LICENSE-VS-Code.txt。项目拥有超过 1.2 万颗星和 800 多个复刻，活跃度较高。
+
+项目的核心内容包括代码仓库结构，展示了构建、CLI、扩展、远程功能、资源、脚本和源代码等主要目录。最新的提交历史显示了持续的开发活动，包括合并拉取请求和更新文件。项目文件列表中包含了 `.editorconfig`, `.gitignore`, `LICENSE.txt`, `README.md` 等常见的文件，以及 `HOW_TO_CONTRIBUTE.md` 和 `VOID_CODEBASE_GUIDE.md` 等文档，为贡献者提供了指南。
+
+项目的 README 文件欢迎新用户，并将其定义为开源的 Cursor 替代品。提供了 Discord 社区链接、贡献指南、开发路线图、更新日志和代码库指南等重要资源，方便用户参与和了解项目。项目明确指出 Void 是从 vscode 项目复刻而来，并提供了 vscode 仓库的链接作为参考。
+
+项目支持多种联系方式，包括 Discord 服务器和电子邮件 hello@voideditor.com，以便用户获取支持和进行交流。项目页面的主题标签（Topics）反映了其关注领域，包括编辑器、开源、vscode、Visual Studio Code、openai、开发者工具、vscode 扩展、cursor、copilot、claude、llm（大型语言模型）和 chatgpt 等，突显了项目与 AI 辅助编程和相关技术紧密关联。项目发布了 Beta 1.2.4 版本以及其他早期版本，并有 34 位贡献者参与其中。
+
+从文件结构和提及的技术标签来看， Void 是一个基于现有编辑器框架（可能是 VS Code）并融入了 AI 相关功能（与 OpenAI、Claude、Copilot、LLM、ChatGPT 等相关）的开源代码编辑器项目，旨在提供一个不同于 Cursor 的选择。
+
+---
+
+## yuaotian / go-cursor-help
+
+解决Cursor免费订阅期间提示“您已达到试用请求限制”或“此计算机上使用了过多的免费试用账户，请升级到专业版。我们设置此限制是为了防止滥用。如果您认为这是个错误，请告知我们”的问题
+
+**作者:** [yuaotian](https://github.com/yuaotian) | **仓库:** [Github 链接](https://github.com/yuaotian/go-cursor-help) | **语言:** Shell
+
+### 项目简介
+
+Cursor 免费试用重置工具
+
+该项目提供了一个针对开发工具 Cursor 在免费试用期间遇到的各种限制提示（包括试用请求次数达到上限、机器上使用了过多免费试用账号、API Key 限制以及 Claude 3.7 高负载问题）的解决方案。该解决方案通过修改 Cursor 的配置文件和 Windows 注册表中的机器标识符来实现重置试用状态。
+
+核心功能与解决方案：
+
+该工具主要通过修改 Cursor 配置文件 `storage.json` 中的多个唯一标识符 (`telemetry.machineId`, `telemetry.macMachineId`, `telemetry.devDeviceId`, `telemetry.sqmId`) 来达到重置设备识别的目的。对于 Windows 用户，还会修改注册表中的 `MachineGuid`。
+
+文章给出了解决不同问题的详细步骤，包括针对 API Key 问题的完全卸载重装方案，以及针对“次数用尽”或“账号过多”等问题的“快速重置”、“切换账号”、“网络优化”等临时解决方案。
+
+工具的使用提供了“一键脚本”方式，支持 **Windows、macOS 和 Linux** 三大主流操作系统，并提供了针对中国用户的加速链接。对于不熟悉命令行操作的用户，提供了 Windows 下打开管理员终端的多种方法。此外，还提供了手动安装和下载预编译好的二进制文件的方式。
+
+文章还详细说明了工具修改的配置文件位置、具体的修改字段，以及 Windows 注册表修改的路径和潜在影响，并提供了自动备份和手动恢复注册表的方法，强调了操作的安全性。
+
+为了防止 Cursor 自动更新导致工具失效，文章提供了禁用自动更新的两种方法：使用内置脚本或手动删除/替换更新相关的目录或文件。最后分享了MIT开源许可，并提供了项目相关的链接和统计信息。
+
+总体来说，这是一个针对 Cursor 免费版限制的高效解决方案，通过修改本地机器标识符来绕过试用检测，并提供了详细的操作指南和安全提示。
+
+---
+
+## beekeeper-studio / beekeeper-studio
+
+现代易用的 SQL 客户端，支持 MySQL, Postgres, SQLite, SQL Server 等。适用于 Linux、MacOS 和 Windows。
+
+**作者:** [beekeeper-studio](https://github.com/beekeeper-studio) | **仓库:** [Github 链接](https://github.com/beekeeper-studio/beekeeper-studio) | **语言:** TypeScript
+
+### 项目简介
+
+现代易用的跨平台 SQL 客户端 Beekeeper Studio
+
+Beekeeper Studio 是一款现代且易于使用的 SQL 客户端和数据库管理器，支持 Linux、MacOS 和 Windows 等主流操作系统。它的核心目标是提供一个强大但同时易于使用的开源 SQL 工作台。
+
+Beekeeper Studio 支持多种流行的数据库系统，包括 PostgreSQL, MySQL, SQLite, SQL Server, Amazon Redshift, CockroachDB, MariaDB, TiDB, Google BigQuery, Oracle Database, Cassandra, Firebird, LibSQL, ClickHouse, DuckDB 等，并计划支持 MongoDB, Snowflake, Trino/Presto, Redis, DynamoDB 等更多数据库。
+
+该项目代码库大部分遵循 GPLv3 许可证，同时包含部分采用商业源代码可用许可证的付费功能。用户可以免费下载和使用包含大部分功能的版本，无需注册。对于需要更多高级功能的用户，可以通过付费许可进行升级。Beekeeper Studio 鼓励社区贡献，并提供了详细的贡献指南和本地编译运行的说明。
+
+核心功能包括：
+
+- 跨平台支持 (Windows, MacOS, Linux)
+- 带有语法高亮的 SQL 查询编辑器（支持自动补全）
+- 支持多标签页操作
+- 表数据的排序和过滤
+- 常用快捷键
+- 保存查询和查询历史记录
+- 优秀的暗黑主题
+- 数据导入/导出和备份/恢复功能
+- 支持将数据查看为 JSON 格式
+
+项目的用户体验设计理念是避免“大杂烩”式的复杂 UI，专注于提供快速、直观和现代化的使用体验。
+
+通过购买付费许可或使用免费版本，用户可以直接支持 Beekeeper Studio 项目的开发和持续改进。项目文档可在 docs.beekeeperstudio.io 上获取。
+
+特别鸣谢 Sqlectron 项目，Beekeeper Studio 最初是其 sqlectron-core 库的一个实验性分支。
+
+---
+
+## JetBrains / compose-multiplatform
+
+Compose Multiplatform：一个现代化的 Kotlin UI 框架，让构建高性能、美观的用户界面变得轻松愉快
+
+**作者:** [JetBrains](https://github.com/JetBrains) | **仓库:** [Github 链接](https://github.com/JetBrains/compose-multiplatform) | **语言:** Kotlin
+
+### 项目简介
+
+Compose Multiplatform：基于 Kotlin 的现代跨平台 UI 框架
+
+Compose Multiplatform 是一个基于 Kotlin 的现代声明式 UI 框架，由 JetBrains 和开源社区共同开发。它的核心在于利用 Jetpack Compose 的能力，使开发者能够在多个平台上共享用户界面，从而实现在 iOS、Android、Desktop（Windows、macOS、Linux）以及 Web（Alpha）等不同操作系统上构建高性能且美观的应用。
+
+该框架与 Google 开发的 Android UI 框架 Jetpack Compose 共享大部分 API，这意味着开发者可以使用熟悉的工具链和 API 同时为 Android 和 iOS 构建用户界面。借助 Kotlin Multiplatform 的基础，Compose Multiplatform 允许应用轻松访问原生平台的 API，例如相机功能，并能集成复杂的原生 UI 视图。
+
+对于 Android 平台，使用 Compose Multiplatform 可以获得与单独使用 Jetpack Compose 开发 Android 应用相同的体验。在桌面端，Compose Multiplatform 支持 JVM，并在主要的桌面操作系统上实现硬件加速的高性能 UI 渲染，同时提供了针对桌面环境的扩展功能，如菜单、键盘快捷键和窗口管理。
+
+虽然 Web 支持目前处于 Alpha 阶段，但 Compose Multiplatform 正在探索基于 Kotlin/Wasm 技术在 Web 上共享 UI 的能力，旨在利用 WebAssembly 带来的性能优势。
+
+除了核心框架，Compose Multiplatform 还提供 Compose HTML 库，这是一个专门用于 Kotlin/JS 的库，提供了构建 Web UI 的 Composable HTML 和 CSS 模块。Compose Multiplatform 社区和官方提供了丰富的学习资源，包括 FAQ、示例、教程等，方便开发者快速入门和深入了解。
+
+该项目的代码库活跃，拥有大量贡献者，主要使用 Kotlin 语言，并遵循 Apache-2.0 开源许可协议。
+
+---
+
+## harry0703 / MoneyPrinterTurbo
+
+利用AI大模型，一键生成高清短视频
+
+**作者:** [harry0703](https://github.com/harry0703) | **仓库:** [Github 链接](https://github.com/harry0703/MoneyPrinterTurbo) | **语言:** Python
+
+### 项目简介
+
+利用AI大模型一键生成短视频项目MoneyPrinterTurbo摘要
+
+该项目名为MoneyPrinterTurbo，核心功能是利用AI大模型实现高清短视频的一键生成。用户只需提供一个视频主题或关键词，系统即可全自动完成视频文案生成、素材查找、字幕添加、背景音乐合成等一系列步骤，最终输出一个完整的短视频文件。项目支持横屏（16:9, 1920x1080）和竖屏（9:16, 1080x1920）两种高清视频尺寸，并具备批量生成、视频片段时长设置、中英文文案支持、多种语音合成（可试听）、字幕样式自定义（字体、位置、颜色、大小、描边）、背景音乐（随机或指定）等功能。
+
+视频素材来自高清无版权来源，同时也支持用户使用本地素材。项目兼容多种AI大模型服务商，包括OpenAI、Moonshot、Azure、gpt4free、one-api、通义千问、Google Gemini、Ollama、DeepSeek、文心一言等。尤其推荐中国用户使用DeepSeek或Moonshot，因其在国内访问更稳定便捷。项目采用MVC架构，代码结构清晰，支持API和Web界面两种使用方式。对于部分用户，项目还特别推荐了基于该项目开发的免费在线AI视频生成服务RecCloud，方便直接在线使用。
+
+项目提供了详细的安装部署指南，包括Docker部署和手动部署两种方式，并给出了Windows、MacOS、Ubuntu、CentOS等不同操作系统的安装步骤。项目中还提及了ImageMagick和ffmpeg等依赖的要求和安装说明。同时，文档中也包含了常见问题的解答，如如何使用免费模型、遇到的各种错误提示及解决方法，以及Whisper模型手动下载的指引。
+
+未来计划中，项目将增加GPT-SoVITS配音、优化语音合成、增加视频转场效果、丰富素材来源提升匹配度、增加视频长度选项、支持更多语音合成服务商（如OpenAI TTS），并计划实现自动上传到YouTube平台的功能。
+
+项目基于MIT许可证开源，是对FujiwaraChoki/MoneyPrinter项目的重构和功能增强版本。文档最后提供了项目星标历史和贡献者列表信息。
+
+---
+
+## linera-io / linera-protocol
+
+Linera 协议主仓库
+
+**作者:** [linera-io](https://github.com/linera-io) | **仓库:** [Github 链接](https://github.com/linera-io/linera-protocol) | **语言:** Rust
+
+### 项目简介
+
+Linera协议主体仓库概述
+
+Linera项目致力于构建高度可扩展、低延迟的Web3应用程序去中心化区块链基础设施。该仓库是Linera协议的核心代码库。
+
+项目结构清晰，主要包含以下Rust模块：
+
+- `linera-base`: 提供基础定义和加密功能。
+- `linera-version`: 用于管理二进制文件和服务的版本信息。
+- `linera-views`: 将复杂数据结构映射到键值存储，其过程宏在`linera-views-derive`中实现。
+- `linera-execution`: 包含Linera应用程序运行时和执行的持久化数据及相关逻辑。
+- `linera-chain`: 管理链、证书和跨链消息传递的持久化数据和逻辑。
+- `linera-storage`: 在`linera-chain`之上定义协议的存储抽象。
+- `linera-core`: 包含核心Linera协议，如客户端、服务器逻辑和节点同步等。
+- `linera-rpc`: 定义RPC消息的数据类型及数据模式。
+- `linera-client`: 用于开发Linera客户端，包括命令行客户端和节点服务，以及Web客户端。
+- `linera-service`: 包含客户端（CLI钱包）、代理（验证器前端）和服务器的可执行文件。
+- `linera-sdk`: 用于使用Rust为Wasm虚拟机开发Linera应用程序，过程宏在`linera-sdk-derive`中实现。
+- `examples`: 包含用Rust编写的Linera应用程序示例。
+
+项目提供了便捷的CLI工具。
+
+该仓库采用Apache-2.0许可证，并在GitHub上获得了大量关注（26.1k stars，1.7k forks）。项目主要使用Rust开发，辅以少量Vue、TypeScript、Shell和Solidity代码，并定期发布版本。
+
+核心贡献者包括math2bd、jvff、afck等。
+
+更多信息可访问Linera开发者页面和阅读白皮书。
+
+---
+
+## huggingface / agents-course
+
+这个库包含 Hugging Face Agent 课程
+
+**作者:** [huggingface](https://github.com/huggingface) | **仓库:** [Github 链接](https://github.com/huggingface/agents-course) | **语言:** Jupyter Notebook
+
+### 项目简介
+
+Hugging Face Agent课程总结
+
+Hugging Face Agent 课程是一个旨在教授如何构建和使用 AI Agent 的在线课程。该课程的资源库托管在 GitHub 上，由Huging Face维护，并采用 Apache-2.0 开源许可证。
+
+课程内容分为四个主要单元，从基础知识入门，逐步深入到更高级的主题和实践。课程首先介绍了Agent的概念、大型语言模型（LLMs）的家庭树以及特殊标记。随后，详细讲解了用于构建AI Agent的常用框架，包括 `smolagents`、`LangGraph` 和 `LlamaIndex`，并为每个框架提供独立的学习单元。课程还包含了将LLM进行函数调用的微调技巧的额外内容，以及关于 Agent 可观察性和评估的单元。最后一个单元围绕着一个最终项目展开，该项目专注于 Agentic RAG（检索增强生成）的应用，并鼓励学生创建、测试和认证自己的 Agent，最终将结果展示在排行榜上。
+
+该课程适合具有 Python 和 LLMs 基本知识的学习者。项目库中包含了课程的笔记本、测验、脚本以及翻译协议等资源。社区成员也被鼓励参与贡献，无论是修正拼写错误、语法问题，还是提出并讨论新的单元内容。
+
+总而言之，Hugging Face Agent课程提供了一个全面且实践导向的学习路径，帮助开发者掌握构建和部署AI Agent所需的技能，并鼓励社区协作和知识分享。
+
+---
+
+## cline / cline
+
+自主编码代理，直接集成在你的IDE中，经你授权后即可完成创建/编辑文件、执行命令、使用浏览器等更多功能。
+
+**作者:** [cline](https://github.com/cline) | **仓库:** [Github 链接](https://github.com/cline/cline) | **语言:** TypeScript
+
+### 项目简介
+
+Cline是一个强大的自主编码智能体，它深度集成到开发环境（IDE）中，旨在通过自动化文件创建、编辑、命令执行、网页浏览等任务，显著提升开发效率。Cline的设计理念强调用户控制，在执行每一步操作前都会征得用户的许可，确保安全性和用户掌控。
+
+Cline的核心功能在于其利用先进的AI模型（如Claude 3.7 Sonnet）的代理能力，能够逐步处理复杂的软件开发任务。它能分析项目结构、源代码、ASTs，进行正则搜索，并读取相关文件以理解现有项目。为了处理大型项目，Cline会智能管理上下文信息，避免信息过载。
+
+具体而言，Cline能够直接在编辑器中创建和修改文件，并通过差异视图展示修改内容，用户可以随时编辑或回滚。它还能监控Linter/编译器错误，并自主修复如缺少导入和语法错误等问题。此外，凭借与VSCode终端的集成，Cline可以直接执行终端命令，响应命令行输出，从而执行安装依赖、运行构建脚本、部署应用、管理数据库和执行测试等多种任务，并能适应不同的开发环境。对于Web开发任务，Cline可以启动无头浏览器，模拟用户操作（点击、输入、滚动），捕获屏幕截图和控制台日志，协助修复运行时错误和视觉问题。
+
+Cline支持广泛的API提供商和模型，包括OpenRouter、Anthropic、OpenAI、Google Gemini、AWS Bedrock、Azure和GCP Vertex，同时也支持任何兼容OpenAI的API及本地模型，并会跟踪API使用成本。通过Model Context Protocol，用户可以定制和安装自己的工具，进一步扩展Cline的功能。
+
+Cline还提供“检查点”（Checkpoints）功能，在任务执行的每个步骤创建工作空间的快照，用户可以方便地比较当前状态与快照之间的差异，或回滚到之前的状态，以安全地探索不同的开发路径。
+
+该项目活跃开发中，遵循Apache 2.0许可证，并鼓励社区贡献，提供了详细的贡献指南和本地开发说明。
