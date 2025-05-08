@@ -27,8 +27,18 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
   day: 'numeric',
 }
 
+// 在 content 类型中添加 headingSummaries 结构
+interface HeadingSummary {
+  heading: string
+  summary: string
+  tags?: string[]
+}
+
 interface LayoutProps {
-  content: CoreContent<Blog> & { summary?: string }
+  content: CoreContent<Blog> & {
+    summary?: string
+    headingSummaries?: HeadingSummary[]
+  }
   authorDetails: CoreContent<Authors>[]
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
@@ -44,7 +54,7 @@ export default function PostLayout({
   children,
   headings,
 }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags, summary } = content
+  const { filePath, path, slug, date, title, tags, summary, headingSummaries } = content
   const basePath = path.split('/')[0]
   const [isTocOpen, setIsTocOpen] = useState(false)
   const root = useRef<HTMLDivElement>(null)
@@ -239,6 +249,29 @@ export default function PostLayout({
     })
   }
 
+  // 处理标题摘要数据，将摘要与对应标题匹配起来
+  const headingsWithSummary = headings.map((heading) => {
+    // 如果没有摘要数据，直接返回原标题
+    if (!headingSummaries || headingSummaries.length === 0) {
+      return heading
+    }
+
+    // 寻找匹配的摘要
+    const matchingSummary = headingSummaries.find(
+      (summary) => summary.heading.toLowerCase() === heading.value.toLowerCase()
+    )
+
+    if (matchingSummary) {
+      return {
+        ...heading,
+        summary: matchingSummary.summary,
+        tags: matchingSummary.tags || [],
+      }
+    }
+
+    return heading
+  })
+
   return (
     <SectionContainer>
       <ScrollTopAndComment />
@@ -281,8 +314,9 @@ export default function PostLayout({
                 </button>
               </div>
               <TableOfContents
-                headings={headings}
+                headings={headingsWithSummary}
                 isMobile={true}
+                showSummary={!!headingSummaries && headingSummaries.length > 0}
                 onItemClick={handleToggleToc}
                 className="mobile-toc"
               />
@@ -305,13 +339,6 @@ export default function PostLayout({
                   </dd>
                 </dl>
               </div>
-              {tags && (
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag) => (
-                    <Tag key={tag} text={tag} />
-                  ))}
-                </div>
-              )}
               {summary && (
                 <p className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
                   {summary}
@@ -371,7 +398,11 @@ export default function PostLayout({
             <aside className="hidden lg:col-span-1 lg:block">
               <div className="lg:sticky lg:top-24">
                 <h2 className="mb-4 text-lg font-semibold">目录</h2>
-                <TableOfContents headings={headings} isMobile={false} />
+                <TableOfContents
+                  headings={headingsWithSummary}
+                  isMobile={false}
+                  showSummary={!!headingSummaries && headingSummaries.length > 0}
+                />
               </div>
             </aside>
           </div>
