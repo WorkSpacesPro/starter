@@ -65,13 +65,34 @@ const computedFields: ComputedFields = {
 async function createTagCount(allBlogs) {
   const tagCount: Record<string, number> = {}
   allBlogs.forEach((file) => {
-    if (file.tags && (!isProduction || file.draft !== true)) {
+    // 首先尝试使用顶层的tags
+    if (file.tags && file.tags.length > 0 && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
         const formattedTag = slug(tag)
         if (formattedTag in tagCount) {
           tagCount[formattedTag] += 1
         } else {
           tagCount[formattedTag] = 1
+        }
+      })
+    }
+    // 如果顶层tags为空但有headingSummaries，则从中提取标签
+    else if (
+      file.headingSummaries &&
+      file.headingSummaries.length > 0 &&
+      (!isProduction || file.draft !== true)
+    ) {
+      // 直接处理所有headingSummaries中的标签，不进行去重
+      file.headingSummaries.forEach((headingItem) => {
+        if (headingItem.tags && Array.isArray(headingItem.tags)) {
+          headingItem.tags.forEach((tag) => {
+            const formattedTag = slug(tag)
+            if (formattedTag in tagCount) {
+              tagCount[formattedTag] += 1
+            } else {
+              tagCount[formattedTag] = 1
+            }
+          })
         }
       })
     }
@@ -91,34 +112,82 @@ interface SearchEntry {
   path: string
 }
 
+// 辅助函数：提取和处理摘要文本
+function processSummary(text?: string): string {
+  if (!text) return ''
+  // 清理摘要中的HTML标签和多余空格
+  return text
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+// 辅助函数：确保所有标签的格式一致
+function processTags(tags?: string[]): string[] {
+  if (!tags || !Array.isArray(tags)) return []
+  // 过滤空标签，确保每个标签是字符串，并去除多余空格
+  return tags
+    .filter((tag) => tag && typeof tag === 'string')
+    .map((tag) => tag.trim())
+    .filter((tag) => tag.length > 0)
+}
+
 async function createSearchIndex(allBlogs) {
   if (
     siteMetadata?.search?.provider === 'kbar' &&
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
     const searchEntries: SearchEntry[] = [] // Explicitly type the array
-    const cutoffDate = new Date()
-    cutoffDate.setDate(cutoffDate.getDate() - 7)
-
-    const recentBlogs = allBlogs.filter((blog) => {
-      const postDate = new Date(blog.date)
-      return postDate >= cutoffDate && (!isProduction || blog.draft !== true)
+    // 使用全部博客而不仅是最近的博客，确保所有内容可搜索
+    const filteredBlogs = allBlogs.filter((blog) => {
+      return !isProduction || blog.draft !== true
     })
 
-    const sortedRecentBlogs = sortPosts(recentBlogs)
+    const sortedBlogs = sortPosts(filteredBlogs)
 
-    for (const blog of sortedRecentBlogs) {
+    for (const blog of sortedBlogs) {
       searchEntries.push({
         objectID: blog.path,
         title: blog.title,
         date: blog.date,
-        summary: blog.summary,
-        tags: blog.tags,
+        summary: processSummary(blog.summary),
+        tags: processTags(blog.tags),
         kind: 'Article',
         path: blog.path,
       })
 
-      if (blog.headings) {
+      // 优先使用 headingSummaries 字段
+      if (blog.headingSummaries && blog.headingSummaries.length > 0 && blog.headings) {
+        // 首先建立标题到URL的映射关系
+        const headingToUrlMap = new Map()
+        for (const heading of blog.headings) {
+          if (heading.depth === 2) {
+            headingToUrlMap.set(heading.value.toLowerCase(), heading.url)
+          }
+        }
+
+        for (const headingItem of blog.headingSummaries) {
+          // 从 headings 中查找匹配的标题以获取正确的 URL
+          const headingUrl = headingToUrlMap.get(headingItem.heading.toLowerCase())
+
+          // 如果找到匹配的 URL，使用它；否则跳过这个标题
+          if (headingUrl) {
+            const headingSlug = headingUrl.substring(1) // 移除开头的 # 字符
+
+            searchEntries.push({
+              objectID: `${blog.path}#${headingSlug}`,
+              title: headingItem.heading,
+              date: blog.date,
+              summary: processSummary(headingItem.summary),
+              tags: processTags(headingItem.tags || blog.tags), // 如果标题没有特定标签，使用文章标签
+              kind: 'Heading 2',
+              path: `${blog.path}#${headingSlug}`,
+            })
+          }
+        }
+      }
+      // 后备：如果没有 headingSummaries 则使用 headings
+      else if (blog.headings) {
         for (const heading of blog.headings) {
           if (heading.depth === 2) {
             const headingSlug = heading.url.substring(1)
@@ -126,8 +195,8 @@ async function createSearchIndex(allBlogs) {
               objectID: `${blog.path}#${headingSlug}`,
               title: heading.value,
               date: blog.date,
-              summary: '',
-              tags: [],
+              summary: processSummary(''), // 空摘要
+              tags: processTags(blog.tags), // 使用文章标签
               kind: 'Heading 2',
               path: `${blog.path}#${headingSlug}`,
             })
@@ -145,9 +214,9 @@ async function createSearchIndex(allBlogs) {
         `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
         formattedEntries
       )
-      console.log('Local search index generated with recent posts and headings.')
+      console.log('本地搜索索引已生成，包含所有文章和章节标题。')
     } catch (error) {
-      console.error('Error writing search index file:', error)
+      console.error('写入搜索索引文件时出错:', error)
     }
   }
 }
@@ -169,6 +238,7 @@ export const Blog = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
+    headingSummaries: { type: 'json', default: [] },
   },
   computedFields: {
     ...computedFields,

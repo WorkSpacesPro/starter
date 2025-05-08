@@ -5,13 +5,55 @@ import { formatDate } from '@/utils/formatDate'
 import { cn } from '@/lib/utils'
 import type { Blog } from 'contentlayer/generated'
 import Image from '@/components/Image'
+import React from 'react'
 
 interface ArticleListItemProps {
   post: Omit<Blog, 'body' | '_raw' | '_id'>
 }
 
 export default function ArticleListItem({ post }: ArticleListItemProps) {
-  const { slug, date, title, summary, tags, cover } = post
+  const { slug, date, title, summary, tags, headingSummaries, cover } = post
+
+  // 获取要显示的标签
+  const displayTags = React.useMemo(() => {
+    // 如果有顶层tags且不为空，直接使用
+    if (tags && tags.length > 0) {
+      return tags.map((tag) => ({
+        name: tag,
+        count: 1,
+        displayText: tag,
+      }))
+    }
+
+    // 如果没有顶层标签但有headingSummaries，从中收集标签并统计次数
+    if (headingSummaries && headingSummaries.length > 0) {
+      // 统计所有标签的出现次数
+      const tagCounts: Record<string, number> = {}
+      headingSummaries.forEach((item) => {
+        if (item.tags && Array.isArray(item.tags)) {
+          item.tags.forEach((tag) => {
+            if (tag in tagCounts) {
+              tagCounts[tag] += 1
+            } else {
+              tagCounts[tag] = 1
+            }
+          })
+        }
+      })
+
+      // 生成带计数的标签列表
+      return Object.entries(tagCounts)
+        .map(([tag, count]) => ({
+          name: tag, // 原始标签名(用于搜索)
+          count: count, // 出现次数
+          displayText: count > 1 ? `${tag}(${count})` : tag, // 显示文本
+        }))
+        .sort((a, b) => b.count - a.count) // 按 count 降序排列
+    }
+
+    // 默认返回空数组
+    return []
+  }, [tags, headingSummaries])
 
   return (
     <article
@@ -63,8 +105,10 @@ export default function ArticleListItem({ post }: ArticleListItemProps) {
         </div>
         <div className="pt-3">
           <div className="flex flex-wrap gap-1">
-            {tags.map((tag) => (
-              <Tag key={tag} text={tag} />
+            {displayTags.map((tagInfo) => (
+              <Tag key={tagInfo.name} text={tagInfo.name}>
+                {tagInfo.displayText}
+              </Tag>
             ))}
           </div>
         </div>

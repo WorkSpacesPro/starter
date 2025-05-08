@@ -24,9 +24,30 @@ export default async function TagPage(props: { params: Promise<{ tag: string; pa
   const tag = decodeURI(params.tag)
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   const pageNumber = parseInt(params.page)
+
+  // 修改过滤逻辑，支持从headingSummaries中获取标签
   const filteredPosts = allCoreContent(
-    sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
+    sortPosts(
+      allBlogs.filter((post) => {
+        // 首先检查顶层tags
+        if (post.tags && post.tags.length > 0) {
+          return post.tags.map((t) => slug(t)).includes(tag)
+        }
+        // 如果顶层tags为空但有headingSummaries，则从中查找标签
+        else if (post.headingSummaries && post.headingSummaries.length > 0) {
+          // 检查任意headingItem中是否包含目标标签
+          return post.headingSummaries.some((headingItem) => {
+            if (headingItem.tags && Array.isArray(headingItem.tags)) {
+              return headingItem.tags.map((t) => slug(t)).includes(tag)
+            }
+            return false
+          })
+        }
+        return false
+      })
+    )
   )
+
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
 
   // Return 404 for invalid page numbers or empty pages
