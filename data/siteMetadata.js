@@ -1,6 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Anurag Basant — AI Engineer',
+  title: 'Anurag Basant',
   author: 'Anurag Basant',
   headerTitle: 'Anurag’s Blog',
   description: 'Exploring AI, reinforcement learning, agentic systems, and making GPUs go brrr.',
