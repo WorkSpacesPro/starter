@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Anurag Basant',
   author: 'Anurag Basant',
   headerTitle: 'Anurag’s Blog',
-  description: 'Exploring AI, reinforcement learning, agentic systems, and making GPUs go brrr.',
+  description: 'Science, Technology and Life',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://anuragbasant.com',
