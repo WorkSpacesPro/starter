@@ -1,5 +1,19 @@
 const { withContentlayer } = require('next-contentlayer2')
 
+const siteMetadata = {
+  title: '大表哥精进实验室',
+  author: 'Yang Yong',
+  headerTitle: '大表哥实验室',
+  description: '分享成长方法论、职场经验与生活探索',
+  language: 'zh-CN',
+  siteUrl: 'https://yyddbg.cn',
+  email: 'youremail@example.com',
+  github: 'https://github.com/yourgithub',
+  linkedin: 'https://linkedin.com/in/yourprofile',
+  locale: 'zh-CN',
+}
+
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
