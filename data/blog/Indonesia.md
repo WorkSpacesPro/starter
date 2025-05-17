@@ -1,3 +1,11 @@
+---
+title: "Indonesia"
+date: "2025-05-17"
+tags: ["测试", "博客"]
+draft: false
+summary: "这是我的第一篇博客。"
+---
+
 # 印尼汽车制造业概况
 
 ## 执行摘要
