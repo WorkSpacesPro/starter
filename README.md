@@ -1,4 +1,4 @@
-![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
+https://github.com/timlrx/tailwind-nextjs-starter-blog 
 
 # Tailwind Nextjs Starter Blog
 
